@@ -5,9 +5,9 @@ import { GeistMono } from 'geist/font/mono'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'Certification Form',
+  description: 'Форма за заявка за сертификация - INCERT',
+  generator: 'Next.js',
 }
 
 export default function RootLayout({
