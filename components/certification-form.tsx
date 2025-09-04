@@ -274,7 +274,7 @@ export function CertificationForm() {
       applicationTypes: formData.applicationTypes
     }
     
-    // Опитваме първо да изпратим към нашия API
+    // Изпращаме данните към нашия API
     try {
       const apiResponse = await fetch('/api/submit', {
         method: 'POST',
@@ -286,17 +286,18 @@ export function CertificationForm() {
       
       if (apiResponse.ok) {
         console.log("Данните са изпратени успешно към нашия API")
-        alert(`✅ Заявката е изпратена успешно!\n\n🆔 ID на заявката: ${submissionData.metadata.applicationId}\n\nДанните са получени и обработени.`)
-        return
+      } else {
+        console.error("Грешка при изпращане към API:", apiResponse.status)
       }
     } catch (apiError) {
-      console.log("API не е достъпен, опитваме n8n webhook")
+      console.log("API не е достъпен:", apiError)
     }
     
-    // Ако API не работи, опитваме n8n webhook
+    // Изпращаме данните към n8n webhook
     const webhookUrl = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL || 'http://localhost:5678/webhook/25e22ef0-4a01-4ff5-a694-aa8f8058cb71'
     
     try {
+      console.log("Изпращане към n8n webhook:", webhookUrl)
       const n8nResponse = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
@@ -327,6 +328,7 @@ export function CertificationForm() {
     }
     
     console.log("Form submitted:", submissionData)
+    console.log("Webhook URL:", webhookUrl)
   }
 
   return (
