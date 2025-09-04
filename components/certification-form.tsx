@@ -1692,9 +1692,8 @@ export function CertificationForm() {
               </div>
 
               <div className="space-y-4">
-                <Label className="font-semibold">
-                  Моля уверете се, че към заявката сте приложили копия от следните документи (отбележете кои документи
-                  прилагате):
+                <Label className="font-semibold text-base">
+                  Моля изпратете копия от следните документи на valentina.dobreva@incert.bg и се уверете, че сте ги приложили като отбележете:
                 </Label>
                 <div className="space-y-3">
                   {[
