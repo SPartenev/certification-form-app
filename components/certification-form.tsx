@@ -550,8 +550,8 @@ export function CertificationForm() {
                             <SelectValue placeholder="Изберете вид" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="permanent">Постоянна</SelectItem>
-                            <SelectItem value="temporary">Временна</SelectItem>
+                            <SelectItem value="main">Основна</SelectItem>
+                            <SelectItem value="additional">Допълнителна</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
