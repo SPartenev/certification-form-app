@@ -257,8 +257,103 @@ export function CertificationForm() {
     "Централното управление има право и възможност да налага следните промени в процесите на отделните площадки.",
   ]
 
+  // Функция за преобразуване на английски ключове в български текстове
+  const translateFormData = (data: FormData) => {
+    const translatedData = { ...data }
+    
+    // Преобразуване на стандартите
+    const standardTranslations: { [key: string]: string } = {
+      "iso9001": "ISO 9001:2015",
+      "iso22000": "ISO 22000:2018", 
+      "iso45001": "ISO 45001:2018",
+      "iso39001": "ISO 39001:2012",
+      "iso14001": "ISO 14001:2015",
+      "iso27001": "ISO/IEC 27001:2022",
+      "iso37001": "ISO 37001:2016"
+    }
+    
+    translatedData.standards = data.standards.map(standard => 
+      standardTranslations[standard] || standard
+    )
+    
+    // Преобразуване на видовете заявки (вече са на български)
+    // translatedData.applicationTypes остава както е
+    
+    // Преобразуване на езика на одита
+    const languageTranslations: { [key: string]: string } = {
+      "bulgarian": "Български",
+      "english": "Английски"
+    }
+    translatedData.auditLanguage = languageTranslations[data.auditLanguage] || data.auditLanguage
+    
+    // Преобразуване на нивото на автоматизация
+    const automationTranslations: { [key: string]: string } = {
+      "low": "Ниско",
+      "medium": "Средно", 
+      "high": "Високо"
+    }
+    translatedData.iso14001.automation = automationTranslations[data.iso14001.automation] || data.iso14001.automation
+    
+    // Преобразуване на отговорите Да/Не
+    const yesNoTranslations: { [key: string]: string } = {
+      "yes": "Да",
+      "no": "Не"
+    }
+    translatedData.developNewProducts = yesNoTranslations[data.developNewProducts] || data.developNewProducts
+    translatedData.manufactureProducts = yesNoTranslations[data.manufactureProducts] || data.manufactureProducts
+    translatedData.transfer.validCertificate = yesNoTranslations[data.transfer.validCertificate] || data.transfer.validCertificate
+    
+    // Преобразуване на ISO 27001 категории
+    const categoryTranslations: { [key: string]: string } = {
+      "non-critical": "Организацията работи в бизнес сектори, които не са критични и няма голям обем нормативни изисквания",
+      "serves-critical": "Организацията обслужва клиенти от критични бизнес сектори",
+      "critical": "Организацията работи в критични бизнес сектори",
+      "standard-repetitive": "Процесите са стандартни с повтарящи се задачи, много служители с едни и същи задачи. Малко продукти и услуги",
+      "standard-non-repetitive": "Стандартни, но не повтарящи се процеси, с голям брой продукти или услуги",
+      "complex": "Сложни процеси, голям брой продукти и услуги, много бизнес звена",
+      "mature": "СУСИ е внедрена от повече от година и/или са внедрени други СУ",
+      "partial": "Някои елементи от други системи за управление са внедрени, но не всички",
+      "new": "Няма внедрени други СУ, СУСИ е внедрена преди по-малко от една година",
+      "simple": "Малко на брой или силно стандартизирани IT платформи, сървъри, операционни системи, бази данни, мрежи и др",
+      "moderate": "Няколко различни IT платформи, сървъри, операционни системи, бази данни, мрежи и др",
+      "complex-it": "Много на брой различни IT платформи, сървъри, операционни системи, бази данни, мрежи и др",
+      "minimal": "Незначителна или никаква зависимост от външни изпълнители/доставчици",
+      "high": "Организацията зависи в голяма степен от външни изпълнители или доставчици, които имат голямо въздействие върху важни бизнес процеси",
+      "extensive": "Има голям обем собствени разработки на софтуерни приложения"
+    }
+    
+    translatedData.iso27001.category1 = categoryTranslations[data.iso27001.category1] || data.iso27001.category1
+    translatedData.iso27001.category2 = categoryTranslations[data.iso27001.category2] || data.iso27001.category2
+    translatedData.iso27001.category3 = categoryTranslations[data.iso27001.category3] || data.iso27001.category3
+    translatedData.iso27001.category4 = categoryTranslations[data.iso27001.category4] || data.iso27001.category4
+    translatedData.iso27001.category5 = categoryTranslations[data.iso27001.category5] || data.iso27001.category5
+    translatedData.iso27001.category6 = categoryTranslations[data.iso27001.category6] || data.iso27001.category6
+    
+    // Преобразуване на вида площадка
+    const siteTypeTranslations: { [key: string]: string } = {
+      "main": "Основна",
+      "additional": "Допълнителна"
+    }
+    
+    translatedData.sites = data.sites.map(site => ({
+      ...site,
+      type: siteTypeTranslations[site.type] || site.type
+    }))
+    
+    // Преобразуване на ISO 37001 площадки
+    translatedData.iso37001.sites = data.iso37001.sites.map(site => ({
+      ...site,
+      type: site.type // Това е свободен текст, не се преобразува
+    }))
+    
+    return translatedData
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Преобразуваме данните в български преди изпращане
+    const translatedFormData = translateFormData(formData)
     
     const submissionData = {
       metadata: {
@@ -269,9 +364,9 @@ export function CertificationForm() {
         formVersion: "1.0",
         applicationId: `CERT-${Date.now()}`
       },
-      formData: formData,
-      selectedStandards: formData.standards,
-      applicationTypes: formData.applicationTypes
+      formData: translatedFormData, // Използваме преведените данни
+      selectedStandards: translatedFormData.standards,
+      applicationTypes: formData.applicationTypes // Това вече е на български
     }
     
     // Изпращаме данните към нашия API
@@ -308,10 +403,10 @@ export function CertificationForm() {
       
       if (n8nResponse.ok) {
         console.log("Данните са изпратени успешно към n8n")
-        alert(`✅ Заявката е изпратена успешно!\n\n📧 Email уведомление е изпратено\n🆔 ID на заявката: ${submissionData.metadata.applicationId}`)
+        alert(`✅ Благодарим! Вашата заявка е успешно изпратена.\n\nЩе се свържем с вас скоро!`)
       } else {
         console.error("Грешка при изпращане към n8n:", n8nResponse.status)
-        alert(`⚠️ Има проблем с изпращането на заявката.\n\nГрешка: ${n8nResponse.status}\nМоля опитайте отново или се свържете с поддръжката.`)
+        alert(`⚠️ Възникна проблем при изпращането на заявката.\n\nГрешка: ${n8nResponse.status}\nМоля опитайте отново или се свържете с нас.`)
       }
     } catch (error) {
       console.error("Мрежова грешка при изпращане към n8n:", error)
@@ -324,7 +419,7 @@ export function CertificationForm() {
       })
       localStorage.setItem('failedSubmissions', JSON.stringify(failedSubmissions))
       
-      alert(`⚠️ Няма връзка със сървъра.\n\nДанните са запазени локално за по-късно изпращане.\nID на заявката: ${submissionData.metadata.applicationId}\n\nПроверете интернет връзката и опитайте отново.`)
+      alert(`⚠️ Няма връзка със сървъра.\n\nВашите данни са запазени и ще бъдат изпратени автоматично.\nНомер на заявката: ${submissionData.metadata.applicationId}\n\nПроверете интернет връзката и опитайте отново.`)
     }
     
     console.log("Form submitted:", submissionData)
@@ -1068,7 +1163,7 @@ export function CertificationForm() {
                       </Label>
                     </div>
                     <div className="flex items-start space-x-2">
-                      <RadioGroupItem value="complex" id="cat4-3" />
+                      <RadioGroupItem value="complex-it" id="cat4-3" />
                       <Label htmlFor="cat4-3" className="text-sm leading-relaxed">
                         Много на брой различни IT платформи, сървъри, операционни системи, бази данни, мрежи и др.
                       </Label>
