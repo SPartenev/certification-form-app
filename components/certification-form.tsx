@@ -361,75 +361,42 @@ export function CertificationForm() {
     // Преобразуваме данните в български преди изпращане
     const translatedFormData = translateFormData(formData)
     
+    // Премахваме генерирането на ID от клиента.
+    // Сървърът ще генерира ID-то.
     const submissionData = {
-      metadata: {
-        submittedAt: new Date().toISOString(),
-        submittedBy: formData.filledBy || "Unknown",
-        organizationName: formData.organizationName,
-        eik: formData.eik,
-        formVersion: "1.0",
-        applicationId: `CERT-${Date.now()}`
-      },
-      formData: translatedFormData, // Използваме преведените данни
+      formData: translatedFormData,
       selectedStandards: translatedFormData.standards,
-      applicationTypes: formData.applicationTypes // Това вече е на български
+      applicationTypes: formData.applicationTypes,
+      // Добавяме останалите полета, които сървърът очаква
+      filledBy: formData.filledBy,
+      organizationName: formData.organizationName,
+      eik: formData.eik,
     }
     
-    // Изпращаме данните към нашия API
     try {
-      const apiResponse = await fetch('/api/submit', {
+      const response = await fetch('/api/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(submissionData)
+        body: JSON.stringify(submissionData),
       })
       
-      if (apiResponse.ok) {
-        console.log("Данните са изпратени успешно към нашия API")
-      } else {
-        console.error("Грешка при изпращане към API:", apiResponse.status)
-      }
-    } catch (apiError) {
-      console.log("API не е достъпен:", apiError)
-    }
-    
-    // Изпращаме данните към n8n webhook
-    const webhookUrl = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL || 'http://localhost:5678/webhook/25e22ef0-4a01-4ff5-a694-aa8f8058cb71'
-    
-    try {
-      console.log("Изпращане към n8n webhook:", webhookUrl)
-      const n8nResponse = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(submissionData)
-      })
+      const result = await response.json()
       
-      if (n8nResponse.ok) {
-        console.log("Данните са изпратени успешно към n8n")
-        alert(`✅ Благодарим! Вашата заявка е успешно изпратена.\n\nЩе се свържем с вас скоро!`)
+      if (response.ok && result.success) {
+        console.log("Данните са изпратени успешно:", result)
+        alert(`✅ Благодарим! Вашата заявка е успешно изпратена.\n\nНомер на заявката: ${result.id}\n\nЩе се свържем с вас скоро!`)
+        // Опционално: нулиране на формата след успешно изпращане
+        // setFormData({ ... αρχικό състояние ... })
       } else {
-        console.error("Грешка при изпращане към n8n:", n8nResponse.status)
-        alert(`⚠️ Възникна проблем при изпращането на заявката.\n\nГрешка: ${n8nResponse.status}\nМоля опитайте отново или се свържете с нас.`)
+        console.error("Грешка при изпращане:", result.message)
+        alert(`⚠️ Възникна проблем при изпращането на заявката.\n\nГрешка: ${result.message || response.status}\nМоля опитайте отново или се свържете с нас.`)
       }
     } catch (error) {
-      console.error("Мрежова грешка при изпращане към n8n:", error)
-      
-      const failedSubmissions = JSON.parse(localStorage.getItem('failedSubmissions') || '[]')
-      failedSubmissions.push({
-        timestamp: new Date().toISOString(),
-        data: submissionData,
-        applicationId: submissionData.metadata.applicationId
-      })
-      localStorage.setItem('failedSubmissions', JSON.stringify(failedSubmissions))
-      
-      alert(`⚠️ Няма връзка със сървъра.\n\nВашите данни са запазени и ще бъдат изпратени автоматично.\nНомер на заявката: ${submissionData.metadata.applicationId}\n\nПроверете интернет връзката и опитайте отново.`)
+      console.error("Мрежова грешка:", error)
+      alert(`⚠️ Няма връзка със сървъра.\n\nМоля, проверете интернет връзката си и опитайте отново.`)
     }
-    
-    console.log("Form submitted:", submissionData)
-    console.log("Webhook URL:", webhookUrl)
   }
 
   return (
