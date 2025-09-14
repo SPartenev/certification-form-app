@@ -17,7 +17,8 @@ interface FormData {
   applicationTypes: string[]
   organizationName: string
   eik: string
-  contactPerson: string
+  contactPersonName: string
+  contactPersonPosition: string
   email: string
   phone: string
   additionalInfo: string
@@ -115,7 +116,8 @@ export function CertificationForm() {
     applicationTypes: [],
     organizationName: "",
     eik: "",
-    contactPerson: "",
+    contactPersonName: "",
+    contactPersonPosition: "",
     email: "",
     phone: "",
     additionalInfo: "",
@@ -245,6 +247,8 @@ export function CertificationForm() {
     { id: "iso14001", label: "ISO 14001:2015", icon: Leaf, color: "bg-orange-500" },
     { id: "iso27001", label: "ISO/IEC 27001:2022", icon: Lock, color: "bg-orange-500" },
     { id: "iso37001", label: "ISO 37001:2016", icon: AlertTriangle, color: "bg-orange-500" },
+    { id: "iso37001_2025", label: "ISO 37001:2025", icon: AlertTriangle, color: "bg-orange-500" },
+    { id: "other", label: "Други", icon: Building2, color: "bg-orange-500" },
   ]
 
   const multiSiteOptions = [
@@ -269,7 +273,9 @@ export function CertificationForm() {
       "iso39001": "ISO 39001:2012",
       "iso14001": "ISO 14001:2015",
       "iso27001": "ISO/IEC 27001:2022",
-      "iso37001": "ISO 37001:2016"
+      "iso37001": "ISO 37001:2016",
+      "iso37001_2025": "ISO 37001:2025",
+      "other": "Други"
     }
     
     translatedData.standards = data.standards.map(standard => 
@@ -516,15 +522,27 @@ export function CertificationForm() {
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="contactPerson">Лице за контакт (име и длъжност) *</Label>
-              <Input
-                id="contactPerson"
-                value={formData.contactPerson}
-                onChange={(e) => setFormData((prev) => ({ ...prev, contactPerson: e.target.value }))}
-                className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
-                required
-              />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="contactPersonName">Име и фамилия *</Label>
+                <Input
+                  id="contactPersonName"
+                  value={formData.contactPersonName}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, contactPersonName: e.target.value }))}
+                  className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="contactPersonPosition">Длъжност *</Label>
+                <Input
+                  id="contactPersonPosition"
+                  value={formData.contactPersonPosition}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, contactPersonPosition: e.target.value }))}
+                  className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                  required
+                />
+              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1731,6 +1749,287 @@ export function CertificationForm() {
                   }
                   className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
                   rows={3}
+                />
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {formData.standards.includes("iso37001_2025") && (
+          <Card className="border-stone-200 bg-white">
+            <CardHeader className="bg-orange-50">
+              <CardTitle className="text-stone-800 flex items-center gap-2">
+                <AlertTriangle className="h-5 w-5 text-orange-600" />
+                Секция 7. Борба с подкупването: ISO 37001:2025
+              </CardTitle>
+              <CardDescription>(Акредитация само за територията на България)</CardDescription>
+            </CardHeader>
+            <CardContent className="pt-6 space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label>
+                    Има ли процеси и/или дейности, извън обхвата на сертификация. Ако "да", посочете кои и аргументите
+                    да не бъдат включени.
+                  </Label>
+                  <Textarea
+                    value={formData.iso37001.processesOutOfScope}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        iso37001: { ...prev.iso37001, processesOutOfScope: e.target.value },
+                      }))
+                    }
+                    className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                    rows={3}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>
+                    Държава/-и, в които се осъществяват дейностите (Не е обвързано само с площадката. Напр. от офис в
+                    България могат да бъдат обслужвани клиенти в различни държави).
+                  </Label>
+                  <Textarea
+                    value={formData.iso37001.countries}
+                    onChange={(e) =>
+                      setFormData((prev) => ({ ...prev, iso37001: { ...prev.iso37001, countries: e.target.value } }))
+                    }
+                    className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                    rows={3}
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label>
+                  Посочете приложими нормативни изисквания, договорни и професионални ангажименти и задължения (напр.
+                  нормативни изисквания за законното упражняване на дейността и доказателства, че са изпълнени – номер
+                  на лиценз, разрешително, връзка към публичен регистър; дългосрочни договори в изпълнение – напр.
+                  такива, които имат още поне две години срок за изпълнение).
+                </Label>
+                <Textarea
+                  value={formData.iso37001.requirements}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, iso37001: { ...prev.iso37001, requirements: e.target.value } }))
+                  }
+                  className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                  rows={4}
+                />
+              </div>
+
+              <Separator />
+
+              <div className="space-y-4">
+                <h4 className="font-semibold text-stone-800">Информация за площадки и чувствителни процеси</h4>
+                <p className="text-sm text-stone-600">
+                  Моля попълнете отделна таблица за всеки адрес, който желаете да бъде включен в обхвата на
+                  сертификация.
+                </p>
+
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="space-y-2">
+                      <Label>Адрес на площадката</Label>
+                      <Input
+                        value={formData.iso37001.sites[0]?.address || ""}
+                        onChange={(e) => {
+                          const newSites = [...formData.iso37001.sites]
+                          if (!newSites[0]) newSites[0] = { address: "", type: "", totalEmployees: "", processes: {} }
+                          newSites[0].address = e.target.value
+                          setFormData((prev) => ({ ...prev, iso37001: { ...prev.iso37001, sites: newSites } }))
+                        }}
+                        className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Вид площадката (напр. централен офис, търговски офис, др.)</Label>
+                      <Input
+                        value={formData.iso37001.sites[0]?.type || ""}
+                        onChange={(e) => {
+                          const newSites = [...formData.iso37001.sites]
+                          if (!newSites[0]) newSites[0] = { address: "", type: "", totalEmployees: "", processes: {} }
+                          newSites[0].type = e.target.value
+                          setFormData((prev) => ({ ...prev, iso37001: { ...prev.iso37001, sites: newSites } }))
+                        }}
+                        className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Общ брой на персонала в процеси с висок риск от подкупване</Label>
+                      <Input
+                        value={formData.iso37001.sites[0]?.totalEmployees || ""}
+                        onChange={(e) => {
+                          const newSites = [...formData.iso37001.sites]
+                          if (!newSites[0]) newSites[0] = { address: "", type: "", totalEmployees: "", processes: {} }
+                          newSites[0].totalEmployees = e.target.value
+                          setFormData((prev) => ({ ...prev, iso37001: { ...prev.iso37001, sites: newSites } }))
+                        }}
+                        className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {[
+                      "Стратегическо управление",
+                      "Продажби/офериране",
+                      "Финансово управление и контрол",
+                      "Управление на човешки ресурси",
+                      "Оперативен контрол и отчетност",
+                      "Работа с пари в брой",
+                      "Управление на дистрибуторски/търговски мрежи",
+                      "Дейност, която е свързана с получаване на облаги и подаръци",
+                      "Провеждане на тръжни процедури и избор на доставчици",
+                      "Поддържане на контакт с институции и контролни органи",
+                      "Управление на доставчици",
+                      "Вътрешен одит",
+                      "Предоставяне на ИТ услуги",
+                      "Спонсорство/финансова подкрепа/безвъзмездна помощ",
+                      "Поддържане на разрешения/лицензи/регистрации",
+                      "Осигуряване на физическа сигурност",
+                      "Издаване на разрешения/лицензи/регистрации",
+                      "Обработване на жалби и оплаквания",
+                    ].map((process, index) => (
+                      <div key={index} className="flex items-center gap-2">
+                        <Label className="text-sm flex-1">{process}</Label>
+                        <Input
+                          className="w-20 border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                          placeholder="Брой"
+                          value={formData.iso37001.sites[0]?.processes[process] || ""}
+                          onChange={(e) => {
+                            const newSites = [...formData.iso37001.sites]
+                            if (!newSites[0]) newSites[0] = { address: "", type: "", totalEmployees: "", processes: {} }
+                            newSites[0].processes[process] = e.target.value
+                            setFormData((prev) => ({ ...prev, iso37001: { ...prev.iso37001, sites: newSites } }))
+                          }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label>Общ брой на персонала в процеси с нисък риск</Label>
+                  <Input
+                    value={formData.iso37001.lowRiskEmployees}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        iso37001: { ...prev.iso37001, lowRiskEmployees: e.target.value },
+                      }))
+                    }
+                    className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>Процент от приходите, които идват от публични средства</Label>
+                  <Input
+                    value={formData.iso37001.publicRevenue}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        iso37001: { ...prev.iso37001, publicRevenue: e.target.value },
+                      }))
+                    }
+                    className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                    placeholder="%"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label>
+                    Юридически лица, които са под контрола на организацията (напр. дъщерни дружества, филиали и др.)
+                  </Label>
+                  <Textarea
+                    value={formData.iso37001.controlledEntities}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        iso37001: { ...prev.iso37001, controlledEntities: e.target.value },
+                      }))
+                    }
+                    className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                    rows={2}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>
+                    Юридически лица, които имат контрол върху организацията (напр. чрез собственост, участие в
+                    управителните органи и др.)
+                  </Label>
+                  <Textarea
+                    value={formData.iso37001.controllingEntities}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        iso37001: { ...prev.iso37001, controllingEntities: e.target.value },
+                      }))
+                    }
+                    className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                    rows={2}
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label>
+                  Лица на ръководни длъжности или на длъжности на материално изпълнение, били ли са в това си качество
+                  обект на разследване, включително повдигани ли са им обвинения, които попадат в определението за
+                  "подкупване" през последните пет години? Ако "да", молим да предоставите допълнителна информация.
+                </Label>
+                <Textarea
+                  value={formData.iso37001.investigations}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, iso37001: { ...prev.iso37001, investigations: e.target.value } }))
+                  }
+                  className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                  rows={3}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label>Друга информация, която би имала отношение към сертификацията на СУБП?</Label>
+                <Textarea
+                  value={formData.iso37001.additionalInfo}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      iso37001: { ...prev.iso37001, additionalInfo: e.target.value },
+                    }))
+                  }
+                  className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                  rows={3}
+                />
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {formData.standards.includes("other") && (
+          <Card className="border-stone-200 bg-white">
+            <CardHeader className="bg-orange-50">
+              <CardTitle className="text-stone-800 flex items-center gap-2">
+                <Building2 className="h-5 w-5 text-orange-600" />
+                Други стандарти
+              </CardTitle>
+              <CardDescription>Допълнителна информация за други стандарти</CardDescription>
+            </CardHeader>
+            <CardContent className="pt-6 space-y-6">
+              <div className="space-y-2">
+                <Label>
+                  Моля, опишете подробно другите стандарти, за които кандидатствате, включително техните версии и специфични изисквания.
+                </Label>
+                <Textarea
+                  value={formData.additionalInfo}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, additionalInfo: e.target.value }))
+                  }
+                  className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                  rows={4}
+                  placeholder="Например: ISO 50001:2018 - Енергийно управление, ISO 20000-1:2018 - IT услуги и др."
                 />
               </div>
             </CardContent>
