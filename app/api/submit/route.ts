@@ -23,7 +23,10 @@ export async function POST(request: NextRequest) {
     console.log('Получени данни:', n8nPayload)
     
     // Изпращане към n8n webhook (ако е настроен)
-    const n8nWebhookUrl = process.env.N8N_WEBHOOK_URL
+    let n8nWebhookUrl = process.env.N8N_WEBHOOK_URL?.replace(
+  'http://localhost:5678',
+  'https://n8n_test.i-love-ai.fun'
+);
     if (n8nWebhookUrl) {
       try {
         const n8nResponse = await fetch(n8nWebhookUrl, {
