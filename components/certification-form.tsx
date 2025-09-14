@@ -357,10 +357,10 @@ export function CertificationForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     // Преобразуваме данните в български преди изпращане
     const translatedFormData = translateFormData(formData)
-    
+
     const submissionData = {
       metadata: {
         submittedAt: new Date().toISOString(),
@@ -368,68 +368,48 @@ export function CertificationForm() {
         organizationName: formData.organizationName,
         eik: formData.eik,
         formVersion: "1.0",
-        applicationId: `CERT-${Date.now()}`
+        applicationId: `CERT-${Date.now()}`,
       },
       formData: translatedFormData, // Използваме преведените данни
       selectedStandards: translatedFormData.standards,
-      applicationTypes: formData.applicationTypes // Това вече е на български
+      applicationTypes: formData.applicationTypes, // Това вече е на български
     }
-    
-    // Изпращаме данните към нашия API
+
     try {
-      const apiResponse = await fetch('/api/submit', {
-        method: 'POST',
+      console.log("Изпращане на данни към API:", submissionData)
+      const apiResponse = await fetch("/api/submit", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(submissionData)
+        body: JSON.stringify(submissionData),
       })
-      
+
       if (apiResponse.ok) {
-        console.log("Данните са изпратени успешно към нашия API")
+        const result = await apiResponse.json()
+        console.log("Данните са изпратени успешно:", result)
+        alert(`✅ Благодарим! Вашата заявка с номер ${result.id} е успешно изпратена.\n\nЩе се свържем с вас скоро!`)
       } else {
-        console.error("Грешка при изпращане към API:", apiResponse.status)
-      }
-    } catch (apiError) {
-      console.log("API не е достъпен:", apiError)
-    }
-    
-    // Изпращаме данните към n8n webhook
-    const webhookUrl = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL || 'http://localhost:5678/webhook/25e22ef0-4a01-4ff5-a694-aa8f8058cb71'
-    
-    try {
-      console.log("Изпращане към n8n webhook:", webhookUrl)
-      const n8nResponse = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(submissionData)
-      })
-      
-      if (n8nResponse.ok) {
-        console.log("Данните са изпратени успешно към n8n")
-        alert(`✅ Благодарим! Вашата заявка е успешно изпратена.\n\nЩе се свържем с вас скоро!`)
-      } else {
-        console.error("Грешка при изпращане към n8n:", n8nResponse.status)
-        alert(`⚠️ Възникна проблем при изпращането на заявката.\n\nГрешка: ${n8nResponse.status}\nМоля опитайте отново или се свържете с нас.`)
+        // Грешка от нашия API (напр. 500, 502, ако n8n не отговори)
+        console.error("Грешка при изпращане към API:", apiResponse.status, apiResponse.statusText)
+        throw new Error(`API error: ${apiResponse.status}`)
       }
     } catch (error) {
-      console.error("Мрежова грешка при изпращане към n8n:", error)
-      
-      const failedSubmissions = JSON.parse(localStorage.getItem('failedSubmissions') || '[]')
+      // Мрежова грешка или грешка от API-то
+      console.error("Мрежова грешка или грешка от API:", error)
+
+      const failedSubmissions = JSON.parse(localStorage.getItem("failedSubmissions") || "[]")
       failedSubmissions.push({
         timestamp: new Date().toISOString(),
         data: submissionData,
-        applicationId: submissionData.metadata.applicationId
+        applicationId: submissionData.metadata.applicationId,
       })
-      localStorage.setItem('failedSubmissions', JSON.stringify(failedSubmissions))
-      
-      alert(`⚠️ Няма връзка със сървъра.\n\nВашите данни са запазени и ще бъдат изпратени автоматично.\nНомер на заявката: ${submissionData.metadata.applicationId}\n\nПроверете интернет връзката и опитайте отново.`)
+      localStorage.setItem("failedSubmissions", JSON.stringify(failedSubmissions))
+
+      alert(
+        `⚠️ Няма връзка със сървъра или възникна грешка.\n\nВашите данни са запазени и ще бъдат изпратени автоматично.\nНомер на заявката: ${submissionData.metadata.applicationId}\n\nМоля, проверете интернет връзката си и опитайте отново по-късно.`
+      )
     }
-    
-    console.log("Form submitted:", submissionData)
-    console.log("Webhook URL:", webhookUrl)
   }
 
   return (
