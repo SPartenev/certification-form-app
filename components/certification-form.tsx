@@ -387,8 +387,7 @@ export function CertificationForm() {
       if (response.ok && result.success) {
         console.log("Данните са изпратени успешно:", result)
         alert(`✅ Благодарим! Вашата заявка е успешно изпратена.\n\nНомер на заявката: ${result.id}\n\nЩе се свържем с вас скоро!`)
-        // Опционално: нулиране на формата след успешно изпращане
-        // setFormData({ ... αρχικό състояние ... })
+        window.location.reload()
       } else {
         console.error("Грешка при изпращане:", result.message)
         alert(`⚠️ Възникна проблем при изпращането на заявката.\n\nГрешка: ${result.message || response.status}\nМоля опитайте отново или се свържете с нас.`)
