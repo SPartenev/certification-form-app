@@ -11,7 +11,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
-import { Building2, Shield, Leaf, Lock, Utensils, Car, AlertTriangle, Send } from "lucide-react"
+import { Building2, Shield, Leaf, Lock, Utensils, Car, AlertTriangle, Send, Loader2 } from "lucide-react"
 
 interface FormData {
   applicationTypes: string[]
@@ -112,6 +112,7 @@ interface FormData {
 }
 
 export function CertificationForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState<FormData>({
     applicationTypes: [],
     organizationName: "",
@@ -357,6 +358,9 @@ export function CertificationForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (isSubmitting) return // Prevent double-clicks
+
+    setIsSubmitting(true)
     
     // Преобразуваме данните в български преди изпращане
     const translatedFormData = translateFormData(formData)
@@ -391,10 +395,12 @@ export function CertificationForm() {
       } else {
         console.error("Грешка при изпращане:", result.message)
         alert(`⚠️ Възникна проблем при изпращането на заявката.\n\nГрешка: ${result.message || response.status}\nМоля опитайте отново или се свържете с нас.`)
+        setIsSubmitting(false)
       }
     } catch (error) {
       console.error("Мрежова грешка:", error)
       alert(`⚠️ Няма връзка със сървъра.\n\nМоля, проверете интернет връзката си и опитайте отново.`)
+      setIsSubmitting(false)
     }
   }
 
@@ -2191,9 +2197,19 @@ export function CertificationForm() {
               type="submit"
               className="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 text-lg font-semibold"
               size="lg"
+              disabled={isSubmitting}
             >
-              <Send className="h-5 w-5 mr-2" />
-              Изпрати заявката
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  Изпращане...
+                </>
+              ) : (
+                <>
+                  <Send className="h-5 w-5 mr-2" />
+                  Изпрати заявката
+                </>
+              )}
             </Button>
           </CardContent>
         </Card>
