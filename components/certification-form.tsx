@@ -393,6 +393,11 @@ export function CertificationForm() {
       return
     }
     
+    if (!formData.auditLanguage.trim()) {
+      alert('Моля, попълнете езика на одита!')
+      return
+    }
+    
     setIsSubmitting(true)
     
     // Преобразуваме данните в български преди изпращане
@@ -870,7 +875,7 @@ export function CertificationForm() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="auditLanguage">Език на одита</Label>
+                <Label htmlFor="auditLanguage">Език на одита *</Label>
                 <Input
                   id="auditLanguage"
                   value={formData.auditLanguage}
