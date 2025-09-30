@@ -125,7 +125,7 @@ export function CertificationForm() {
     additionalInfo: "",
     standards: [],
     certificationScope: "",
-    sites: [{ address: "", processes: "", employees: "", type: "" }],
+    sites: [{ address: "", processes: "", employees: "", type: "main" }],
     multiSiteManagement: [],
     outsourcedProcesses: "",
     consultantServices: "",
@@ -240,7 +240,7 @@ export function CertificationForm() {
   const addSite = () => {
     setFormData((prev) => ({
       ...prev,
-      sites: [...prev.sites, { address: "", processes: "", employees: "", type: "" }],
+      sites: [...prev.sites, { address: "", processes: "", employees: "", type: "additional" }],
     }))
   }
 
@@ -248,6 +248,13 @@ export function CertificationForm() {
     setFormData((prev) => ({
       ...prev,
       sites: prev.sites.map((site, i) => (i === index ? { ...site, [field]: value } : site)),
+    }))
+  }
+
+  const removeSite = (index: number) => {
+    setFormData((prev) => ({
+      ...prev,
+      sites: prev.sites.filter((_, i) => i !== index),
     }))
   }
 
@@ -673,7 +680,18 @@ export function CertificationForm() {
               </div>
 
               {formData.sites.map((site, index) => (
-                <Card key={index} className="border-stone-100">
+                <Card key={index} className="border-stone-100 relative">
+                  {index > 0 && (
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => removeSite(index)}
+                      className="absolute top-2 right-2 h-8 w-8 p-0 text-gray-500 hover:text-red-600 hover:bg-red-50"
+                    >
+                      ×
+                    </Button>
+                  )}
                   <CardContent className="pt-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
