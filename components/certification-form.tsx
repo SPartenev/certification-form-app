@@ -445,8 +445,6 @@ export function CertificationForm() {
               />
             </div>
             <div className="text-right">
-              <div className="text-sm text-stone-500">Стр. 1 от 10</div>
-              <div className="text-sm text-stone-500">Заявка за сертификация (8/19.2.25)</div>
               <div className="text-sm text-stone-500">www.incert.bg</div>
             </div>
           </div>
