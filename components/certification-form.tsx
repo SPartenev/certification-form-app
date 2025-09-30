@@ -17,6 +17,7 @@ interface FormData {
   applicationTypes: string[]
   organizationName: string
   eik: string
+  country: string
   contactPersonName: string
   contactPersonPosition: string
   email: string
@@ -116,6 +117,7 @@ export function CertificationForm() {
     applicationTypes: [],
     organizationName: "",
     eik: "",
+    country: "",
     contactPersonName: "",
     contactPersonPosition: "",
     email: "",
@@ -201,10 +203,29 @@ export function CertificationForm() {
   })
 
   const handleStandardChange = (standard: string, checked: boolean) => {
-    setFormData((prev) => ({
-      ...prev,
-      standards: checked ? [...prev.standards, standard] : prev.standards.filter((s) => s !== standard),
-    }))
+    setFormData((prev) => {
+      let newStandards = [...prev.standards]
+      
+      if (checked) {
+        // Ако се избира ISO 37001:2016, премахваме ISO 37001:2025
+        if (standard === "iso37001") {
+          newStandards = newStandards.filter((s) => s !== "iso37001_2025")
+        }
+        // Ако се избира ISO 37001:2025, премахваме ISO 37001:2016
+        else if (standard === "iso37001_2025") {
+          newStandards = newStandards.filter((s) => s !== "iso37001")
+        }
+        
+        newStandards.push(standard)
+      } else {
+        newStandards = newStandards.filter((s) => s !== standard)
+      }
+      
+      return {
+        ...prev,
+        standards: newStandards,
+      }
+    })
   }
 
   const handleApplicationTypeChange = (value: string, label: string, checked: boolean) => {
@@ -258,7 +279,7 @@ export function CertificationForm() {
     "Провежда се общ преглед от ръководството за централното управление и площадките.",
     "Всички площадки са включени в програмата за вътрешни одити на организацията.",
     "Централното управление носи отговорност за събирането и анализа на данни от всички площадки.",
-    "Централното управление има право и възможност да налага следните промени в процесите на отделните площадки.",
+    "Централното управление има право и възможност да налага следните промени в процесите на отделните площадки (в системата и документацията ѝ, в резултат от проведени прегледи от ръководството, в резултат от оплаквания, в резултат от коригиращи действия, в резултат на вътрешни одити и оценяване на резултатите и промени, произтичащи от нормативни изисквания, относими към приложимите стандарти).",
   ]
 
   // Функция за преобразуване на английски ключове в български текстове
@@ -358,6 +379,12 @@ export function CertificationForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
+    // Валидация за задължителни полета
+    if (formData.applicationTypes.length === 0) {
+      alert('Моля, изберете поне един вид на заявката!')
+      return
+    }
+    
     // Преобразуваме данните в български преди изпращане
     const translatedFormData = translateFormData(formData)
     
@@ -417,7 +444,7 @@ export function CertificationForm() {
           <div className="mt-4">
             <CardTitle className="text-2xl font-bold text-stone-800">Заявка за сертификация</CardTitle>
             <CardDescription className="text-stone-600 mt-2">
-              Попълнената заявка можете да изпратите като използвате бутона най-долу "Изпрати заявката"
+              
             </CardDescription>
           </div>
         </CardHeader>
@@ -427,7 +454,7 @@ export function CertificationForm() {
         <Card className="border-stone-200 bg-white">
           <CardHeader className="bg-orange-50">
             <CardTitle className="text-stone-800">Вид на заявката</CardTitle>
-            <CardDescription>Можете да изберете няколко вида заявки</CardDescription>
+            <CardDescription>Изберете вида на заявката *</CardDescription>
           </CardHeader>
           <CardContent className="pt-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -459,7 +486,7 @@ export function CertificationForm() {
           <CardHeader className="bg-orange-50">
             <CardTitle className="text-stone-800 flex items-center gap-2">
               <Building2 className="h-5 w-5 text-orange-600" />
-              Секция 1. Данни за организацията
+              Данни за организацията
             </CardTitle>
           </CardHeader>
           <CardContent className="pt-6 space-y-6">
@@ -488,7 +515,20 @@ export function CertificationForm() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="contactPersonName">Име и фамилия *</Label>
+                <Label htmlFor="country">Държава *</Label>
+                <Input
+                  id="country"
+                  value={formData.country}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, country: e.target.value }))}
+                  className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="contactPersonName">Име и фамилия(лице за контакт) *</Label>
                 <Input
                   id="contactPersonName"
                   value={formData.contactPersonName}
@@ -498,7 +538,7 @@ export function CertificationForm() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="contactPersonPosition">Длъжност *</Label>
+                <Label htmlFor="contactPersonPosition">Длъжност(лице за контакт) *</Label>
                 <Input
                   id="contactPersonPosition"
                   value={formData.contactPersonPosition}
@@ -549,8 +589,8 @@ export function CertificationForm() {
 
         <Card className="border-stone-200 bg-white">
           <CardHeader className="bg-orange-50">
-            <CardTitle className="text-stone-800">Стандарти за сертификация (отбележете):</CardTitle>
-            <CardDescription>Отбележете стандартите, за които кандидатствате</CardDescription>
+            <CardTitle className="text-stone-800">Стандарти за сертификация:</CardTitle>
+            <CardDescription>Необходимо е да отбележите поне един стандарт, за да можете да изпратите заявката.</CardDescription>
           </CardHeader>
           <CardContent className="pt-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -578,6 +618,34 @@ export function CertificationForm() {
           </CardContent>
         </Card>
 
+        {formData.standards.includes("other") && (
+          <Card className="border-stone-200 bg-white">
+            <CardHeader className="bg-orange-50">
+              <CardTitle className="text-stone-800 flex items-center gap-2">
+                <Building2 className="h-5 w-5 text-orange-600" />
+                Други стандарти
+              </CardTitle>
+              <CardDescription>Допълнителна информация за други стандарти</CardDescription>
+            </CardHeader>
+            <CardContent className="pt-6 space-y-6">
+              <div className="space-y-2">
+                <Label>
+                  Моля, опишете подробно другите стандарти, за които кандидатствате, включително техните версии и специфични изисквания.
+                </Label>
+                <Textarea
+                  value={formData.additionalInfo}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, additionalInfo: e.target.value }))
+                  }
+                  className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                  rows={4}
+                  placeholder="Например: ISO 50001:2018 - Енергийно управление, ISO 20000-1:2018 - IT услуги и др."
+                />
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
         <Card className="border-stone-200 bg-white">
           <CardHeader className="bg-orange-50">
             <CardTitle className="text-stone-800">Обхват на сертификация</CardTitle>
@@ -602,9 +670,6 @@ export function CertificationForm() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h4 className="font-semibold text-stone-800">Площадки</h4>
-                <Button type="button" onClick={addSite} variant="outline" size="sm">
-                  Добави площадка
-                </Button>
               </div>
 
               {formData.sites.map((site, index) => (
@@ -654,6 +719,12 @@ export function CertificationForm() {
                   </CardContent>
                 </Card>
               ))}
+              
+              <div className="flex justify-end pt-4">
+                <Button type="button" onClick={addSite} variant="outline" size="sm">
+                  Добави площадка
+                </Button>
+              </div>
             </div>
 
             {formData.sites.length > 1 && (
@@ -777,18 +848,13 @@ export function CertificationForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="auditLanguage">Език на одита</Label>
-                <Select
+                <Input
+                  id="auditLanguage"
                   value={formData.auditLanguage}
-                  onValueChange={(value) => setFormData((prev) => ({ ...prev, auditLanguage: value }))}
-                >
-                  <SelectTrigger className="border-stone-200 focus:border-orange-500 focus:ring-orange-500">
-                    <SelectValue placeholder="Изберете език" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="bulgarian">Български</SelectItem>
-                    <SelectItem value="english">Английски</SelectItem>
-                  </SelectContent>
-                </Select>
+                  onChange={(e) => setFormData((prev) => ({ ...prev, auditLanguage: e.target.value }))}
+                  className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                  placeholder="Например: Български, Английски, и др."
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="auditDeadline">Краен срок за одита</Label>
@@ -810,7 +876,7 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <Shield className="h-5 w-5 text-orange-600" />
-                Секция 2. Безопасност и здраве при работа: ISO 45001:2018
+                Безопасност и здраве при работа
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-6 space-y-4">
@@ -918,7 +984,7 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <Leaf className="h-5 w-5 text-orange-600" />
-                Секция 3. Околна среда: ISO 14001:2015
+                Околна среда
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-6 space-y-4">
@@ -1023,7 +1089,7 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <Lock className="h-5 w-5 text-orange-600" />
-                Секция 4. Сигурност на информацията: ISO/IEC 27001:2022
+                Сигурност на информацията
               </CardTitle>
               <CardDescription>
                 За всяка от категориите моля отбележете само едно твърдение, което най-точно описва ситуацията във
@@ -1313,7 +1379,7 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <Utensils className="h-5 w-5 text-orange-600" />
-                Секция 5. Безопасност на храните: ISO 22000:2018
+                Безопасност на храните
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-6 space-y-4">
@@ -1368,7 +1434,7 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <Car className="h-5 w-5 text-orange-600" />
-                Секция 6. Безопасност на движението: ISO 39001:2012
+                Безопасност на движението
               </CardTitle>
               <CardDescription>
                 Отбележете едно или повече от следващите твърдения, които са приложими за Вашата система за управление
@@ -1467,7 +1533,7 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <AlertTriangle className="h-5 w-5 text-orange-600" />
-                Секция 7. Борба с подкупването: ISO 37001:2016
+                Борба с подкупването
               </CardTitle>
               <CardDescription>(Акредитация само за територията на България)</CardDescription>
             </CardHeader>
@@ -1724,7 +1790,7 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <AlertTriangle className="h-5 w-5 text-orange-600" />
-                Секция 7. Борба с подкупването: ISO 37001:2025
+                Борба с подкупването
               </CardTitle>
               <CardDescription>(Акредитация само за територията на България)</CardDescription>
             </CardHeader>
@@ -1972,34 +2038,6 @@ export function CertificationForm() {
           </Card>
         )}
 
-        {formData.standards.includes("other") && (
-          <Card className="border-stone-200 bg-white">
-            <CardHeader className="bg-orange-50">
-              <CardTitle className="text-stone-800 flex items-center gap-2">
-                <Building2 className="h-5 w-5 text-orange-600" />
-                Други стандарти
-              </CardTitle>
-              <CardDescription>Допълнителна информация за други стандарти</CardDescription>
-            </CardHeader>
-            <CardContent className="pt-6 space-y-6">
-              <div className="space-y-2">
-                <Label>
-                  Моля, опишете подробно другите стандарти, за които кандидатствате, включително техните версии и специфични изисквания.
-                </Label>
-                <Textarea
-                  value={formData.additionalInfo}
-                  onChange={(e) =>
-                    setFormData((prev) => ({ ...prev, additionalInfo: e.target.value }))
-                  }
-                  className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
-                  rows={4}
-                  placeholder="Например: ISO 50001:2018 - Енергийно управление, ISO 20000-1:2018 - IT услуги и др."
-                />
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
         {formData.applicationTypes.includes("Трансфер") && (
           <Card className="border-stone-200 bg-white">
             <CardHeader className="bg-orange-50">
@@ -2181,7 +2219,7 @@ export function CertificationForm() {
 
             <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
               <p className="text-sm text-stone-800">
-                <strong>Забележка:</strong> За да изпратите заявката използвайте бутона по долу.
+                Ще разгледаме заявката Ви в рамките на работния ден. Ще се свържем с Вас по телефона, ако са необходими уточнения, след което ще получите индивидуална оферта на посочения от Вас имейл.
               </p>
             </div>
 
