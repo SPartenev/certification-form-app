@@ -113,6 +113,7 @@ interface FormData {
 }
 
 export function CertificationForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState<FormData>({
     applicationTypes: [],
     organizationName: "",
@@ -392,6 +393,8 @@ export function CertificationForm() {
       return
     }
     
+    setIsSubmitting(true)
+    
     // Преобразуваме данните в български преди изпращане
     const translatedFormData = translateFormData(formData)
     
@@ -429,6 +432,8 @@ export function CertificationForm() {
     } catch (error) {
       console.error("Мрежова грешка:", error)
       alert(`⚠️ Няма връзка със сървъра.\n\nМоля, проверете интернет връзката си и опитайте отново.`)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -2243,11 +2248,21 @@ export function CertificationForm() {
 
             <Button
               type="submit"
-              className="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 text-lg font-semibold"
+              disabled={isSubmitting}
+              className="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
               size="lg"
             >
-              <Send className="h-5 w-5 mr-2" />
-              Изпрати заявката
+              {isSubmitting ? (
+                <>
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                  Изпраща се...
+                </>
+              ) : (
+                <>
+                  <Send className="h-5 w-5 mr-2" />
+                  Изпрати заявката
+                </>
+              )}
             </Button>
           </CardContent>
         </Card>
