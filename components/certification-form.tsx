@@ -110,6 +110,7 @@ interface FormData {
   integrated: {
     statements: string[]
   }
+  selectedSchemes?: string[]
 }
 
 export function CertificationForm() {
@@ -306,10 +307,31 @@ export function CertificationForm() {
       "iso37001_2025": "ISO 37001:2025",
       "other": "Други"
     }
+
+    // Схеми на стандартите
+    const standardSchemes: { [key: string]: string } = {
+      "iso9001": "СУК",
+      "iso14001": "СУОС", 
+      "iso22000": "СУБХП",
+      "iso27001": "СУСИ",
+      "iso37001": "СУБП",
+      "iso37001_2025": "СУБП",
+      "iso39001": "СУБДП",
+      "iso45001": "СУЗБР",
+      "other": "Други"
+    }
     
     translatedData.standards = data.standards.map(standard => 
       standardTranslations[standard] || standard
     )
+
+    // Генериране на схемите на избраните стандарти
+    const selectedSchemes = data.standards.map(standard => 
+      standardSchemes[standard] || "Неизвестна схема"
+    )
+    
+    // Добавяне на скрито поле със схемите
+    translatedData.selectedSchemes = selectedSchemes
     
     // Преобразуване на видовете заявки (вече са на български)
     // translatedData.applicationTypes остава както е
