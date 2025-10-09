@@ -1649,7 +1649,7 @@ export function CertificationForm() {
                 </p>
 
                 <div className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>Адрес на площадката</Label>
                       <Input
@@ -1676,27 +1676,28 @@ export function CertificationForm() {
                         className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
                       />
                     </div>
-                    <div className="space-y-2">
-                      <Label>Общ брой на персонала в процеси с висок риск от подкупване</Label>
-                      <Input
-                        value={formData.iso37001.sites[0]?.totalEmployees || ""}
-                        onChange={(e) => {
-                          const newSites = [...formData.iso37001.sites]
-                          if (!newSites[0]) newSites[0] = { address: "", type: "", totalEmployees: "", processes: {} }
-                          newSites[0].totalEmployees = e.target.value
-                          setFormData((prev) => ({ ...prev, iso37001: { ...prev.iso37001, sites: newSites } }))
-                        }}
-                        className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
-                      />
-                      <p className="text-sm text-gray-600 mt-1">
-                        Това е общият брой от попълнените хора в секцията "Чувствителен процес" по-горе.
-                      </p>
-                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label>Общ брой на персонала в процеси с висок риск от подкупване</Label>
+                    <Input
+                      value={formData.iso37001.sites[0]?.totalEmployees || ""}
+                      onChange={(e) => {
+                        const newSites = [...formData.iso37001.sites]
+                        if (!newSites[0]) newSites[0] = { address: "", type: "", totalEmployees: "", processes: {} }
+                        newSites[0].totalEmployees = e.target.value
+                        setFormData((prev) => ({ ...prev, iso37001: { ...prev.iso37001, sites: newSites } }))
+                      }}
+                      className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                    />
+                    <p className="text-sm text-gray-600 mt-1">
+                      Това е общият брой от попълнените хора в секцията "Чувствителен процес" по-горе.
+                    </p>
                   </div>
 
                   {/* Чувствителни процеси */}
-                  <div className="bg-gray-100 p-4 rounded-lg border border-gray-200">
-                    <h4 className="text-lg font-semibold text-gray-800 mb-4">Чувствителен процес</h4>
+                  <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
+                    <h4 className="text-lg font-semibold text-amber-800 mb-4">Чувствителен процес</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {[
                         "Стратегическо управление",
@@ -1913,7 +1914,7 @@ export function CertificationForm() {
                 </p>
 
                 <div className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>Адрес на площадката</Label>
                       <Input
@@ -1940,27 +1941,28 @@ export function CertificationForm() {
                         className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
                       />
                     </div>
-                    <div className="space-y-2">
-                      <Label>Общ брой на персонала в процеси с висок риск от подкупване</Label>
-                      <Input
-                        value={formData.iso37001.sites[0]?.totalEmployees || ""}
-                        onChange={(e) => {
-                          const newSites = [...formData.iso37001.sites]
-                          if (!newSites[0]) newSites[0] = { address: "", type: "", totalEmployees: "", processes: {} }
-                          newSites[0].totalEmployees = e.target.value
-                          setFormData((prev) => ({ ...prev, iso37001: { ...prev.iso37001, sites: newSites } }))
-                        }}
-                        className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
-                      />
-                      <p className="text-sm text-gray-600 mt-1">
-                        Това е общият брой от попълнените хора в секцията "Чувствителен процес" по-горе.
-                      </p>
-                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label>Общ брой на персонала в процеси с висок риск от подкупване</Label>
+                    <Input
+                      value={formData.iso37001.sites[0]?.totalEmployees || ""}
+                      onChange={(e) => {
+                        const newSites = [...formData.iso37001.sites]
+                        if (!newSites[0]) newSites[0] = { address: "", type: "", totalEmployees: "", processes: {} }
+                        newSites[0].totalEmployees = e.target.value
+                        setFormData((prev) => ({ ...prev, iso37001: { ...prev.iso37001, sites: newSites } }))
+                      }}
+                      className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                    />
+                    <p className="text-sm text-gray-600 mt-1">
+                      Това е общият брой от попълнените хора в секцията "Чувствителен процес" по-горе.
+                    </p>
                   </div>
 
                   {/* Чувствителни процеси */}
-                  <div className="bg-gray-100 p-4 rounded-lg border border-gray-200">
-                    <h4 className="text-lg font-semibold text-gray-800 mb-4">Чувствителен процес</h4>
+                  <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
+                    <h4 className="text-lg font-semibold text-amber-800 mb-4">Чувствителен процес</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {[
                         "Стратегическо управление",
