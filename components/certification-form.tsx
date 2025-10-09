@@ -1688,45 +1688,52 @@ export function CertificationForm() {
                         }}
                         className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
                       />
+                      <p className="text-sm text-gray-600 mt-1">
+                        Това е общият брой от попълнените хора в секцията "Чувствителен процес" по-горе.
+                      </p>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {[
-                      "Стратегическо управление",
-                      "Продажби/офериране",
-                      "Финансово управление и контрол",
-                      "Управление на човешки ресурси",
-                      "Оперативен контрол и отчетност",
-                      "Работа с пари в брой",
-                      "Управление на дистрибуторски/търговски мрежи",
-                      "Дейност, която е свързана с получаване на облаги и подаръци",
-                      "Провеждане на тръжни процедури и избор на доставчици",
-                      "Поддържане на контакт с институции и контролни органи",
-                      "Управление на доставчици",
-                      "Вътрешен одит",
-                      "Предоставяне на ИТ услуги",
-                      "Спонсорство/финансова подкрепа/безвъзмездна помощ",
-                      "Поддържане на разрешения/лицензи/регистрации",
-                      "Осигуряване на физическа сигурност",
-                      "Издаване на разрешения/лицензи/регистрации",
-                      "Обработване на жалби и оплаквания",
-                    ].map((process, index) => (
-                      <div key={index} className="flex items-center gap-2">
-                        <Label className="text-sm flex-1">{process}</Label>
-                        <Input
-                          className="w-20 border-stone-200 focus:border-orange-500 focus:ring-orange-500"
-                          placeholder="Брой"
-                          value={formData.iso37001.sites[0]?.processes[process] || ""}
-                          onChange={(e) => {
-                            const newSites = [...formData.iso37001.sites]
-                            if (!newSites[0]) newSites[0] = { address: "", type: "", totalEmployees: "", processes: {} }
-                            newSites[0].processes[process] = e.target.value
-                            setFormData((prev) => ({ ...prev, iso37001: { ...prev.iso37001, sites: newSites } }))
-                          }}
-                        />
-                      </div>
-                    ))}
+                  {/* Чувствителни процеси */}
+                  <div className="bg-gray-100 p-4 rounded-lg border border-gray-200">
+                    <h4 className="text-lg font-semibold text-gray-800 mb-4">Чувствителен процес</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {[
+                        "Стратегическо управление",
+                        "Продажби/офериране",
+                        "Финансово управление и контрол",
+                        "Управление на човешки ресурси",
+                        "Оперативен контрол и отчетност",
+                        "Работа с пари в брой",
+                        "Управление на дистрибуторски/търговски мрежи",
+                        "Дейност, която е свързана с получаване на облаги и подаръци",
+                        "Провеждане на тръжни процедури и избор на доставчици",
+                        "Поддържане на контакт с институции и контролни органи",
+                        "Управление на доставчици",
+                        "Вътрешен одит",
+                        "Предоставяне на ИТ услуги",
+                        "Спонсорство/финансова подкрепа/безвъзмездна помощ",
+                        "Поддържане на разрешения/лицензи/регистрации",
+                        "Осигуряване на физическа сигурност",
+                        "Издаване на разрешения/лицензи/регистрации",
+                        "Обработване на жалби и оплаквания",
+                      ].map((process, index) => (
+                        <div key={index} className="flex items-center gap-2">
+                          <Label className="text-sm flex-1">{process}</Label>
+                          <Input
+                            className="w-20 border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                            placeholder="Брой"
+                            value={formData.iso37001.sites[0]?.processes[process] || ""}
+                            onChange={(e) => {
+                              const newSites = [...formData.iso37001.sites]
+                              if (!newSites[0]) newSites[0] = { address: "", type: "", totalEmployees: "", processes: {} }
+                              newSites[0].processes[process] = e.target.value
+                              setFormData((prev) => ({ ...prev, iso37001: { ...prev.iso37001, sites: newSites } }))
+                            }}
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1945,45 +1952,52 @@ export function CertificationForm() {
                         }}
                         className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
                       />
+                      <p className="text-sm text-gray-600 mt-1">
+                        Това е общият брой от попълнените хора в секцията "Чувствителен процес" по-горе.
+                      </p>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {[
-                      "Стратегическо управление",
-                      "Продажби/офериране",
-                      "Финансово управление и контрол",
-                      "Управление на човешки ресурси",
-                      "Оперативен контрол и отчетност",
-                      "Работа с пари в брой",
-                      "Управление на дистрибуторски/търговски мрежи",
-                      "Дейност, която е свързана с получаване на облаги и подаръци",
-                      "Провеждане на тръжни процедури и избор на доставчици",
-                      "Поддържане на контакт с институции и контролни органи",
-                      "Управление на доставчици",
-                      "Вътрешен одит",
-                      "Предоставяне на ИТ услуги",
-                      "Спонсорство/финансова подкрепа/безвъзмездна помощ",
-                      "Поддържане на разрешения/лицензи/регистрации",
-                      "Осигуряване на физическа сигурност",
-                      "Издаване на разрешения/лицензи/регистрации",
-                      "Обработване на жалби и оплаквания",
-                    ].map((process, index) => (
-                      <div key={index} className="flex items-center gap-2">
-                        <Label className="text-sm flex-1">{process}</Label>
-                        <Input
-                          className="w-20 border-stone-200 focus:border-orange-500 focus:ring-orange-500"
-                          placeholder="Брой"
-                          value={formData.iso37001.sites[0]?.processes[process] || ""}
-                          onChange={(e) => {
-                            const newSites = [...formData.iso37001.sites]
-                            if (!newSites[0]) newSites[0] = { address: "", type: "", totalEmployees: "", processes: {} }
-                            newSites[0].processes[process] = e.target.value
-                            setFormData((prev) => ({ ...prev, iso37001: { ...prev.iso37001, sites: newSites } }))
-                          }}
-                        />
-                      </div>
-                    ))}
+                  {/* Чувствителни процеси */}
+                  <div className="bg-gray-100 p-4 rounded-lg border border-gray-200">
+                    <h4 className="text-lg font-semibold text-gray-800 mb-4">Чувствителен процес</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {[
+                        "Стратегическо управление",
+                        "Продажби/офериране",
+                        "Финансово управление и контрол",
+                        "Управление на човешки ресурси",
+                        "Оперативен контрол и отчетност",
+                        "Работа с пари в брой",
+                        "Управление на дистрибуторски/търговски мрежи",
+                        "Дейност, която е свързана с получаване на облаги и подаръци",
+                        "Провеждане на тръжни процедури и избор на доставчици",
+                        "Поддържане на контакт с институции и контролни органи",
+                        "Управление на доставчици",
+                        "Вътрешен одит",
+                        "Предоставяне на ИТ услуги",
+                        "Спонсорство/финансова подкрепа/безвъзмездна помощ",
+                        "Поддържане на разрешения/лицензи/регистрации",
+                        "Осигуряване на физическа сигурност",
+                        "Издаване на разрешения/лицензи/регистрации",
+                        "Обработване на жалби и оплаквания",
+                      ].map((process, index) => (
+                        <div key={index} className="flex items-center gap-2">
+                          <Label className="text-sm flex-1">{process}</Label>
+                          <Input
+                            className="w-20 border-stone-200 focus:border-orange-500 focus:ring-orange-500"
+                            placeholder="Брой"
+                            value={formData.iso37001.sites[0]?.processes[process] || ""}
+                            onChange={(e) => {
+                              const newSites = [...formData.iso37001.sites]
+                              if (!newSites[0]) newSites[0] = { address: "", type: "", totalEmployees: "", processes: {} }
+                              newSites[0].processes[process] = e.target.value
+                              setFormData((prev) => ({ ...prev, iso37001: { ...prev.iso37001, sites: newSites } }))
+                            }}
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
