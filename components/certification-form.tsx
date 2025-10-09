@@ -1696,8 +1696,8 @@ export function CertificationForm() {
                   </div>
 
                   {/* Чувствителни процеси */}
-                  <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
-                    <h4 className="text-lg font-semibold text-amber-800 mb-4">Чувствителен процес</h4>
+                  <div className="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                    <h4 className="text-lg font-semibold text-stone-700 mb-4">Чувствителен процес</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {[
                         "Стратегическо управление",
@@ -1961,8 +1961,8 @@ export function CertificationForm() {
                   </div>
 
                   {/* Чувствителни процеси */}
-                  <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
-                    <h4 className="text-lg font-semibold text-amber-800 mb-4">Чувствителен процес</h4>
+                  <div className="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                    <h4 className="text-lg font-semibold text-stone-700 mb-4">Чувствителен процес</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {[
                         "Стратегическо управление",
