@@ -1680,6 +1680,9 @@ export function CertificationForm() {
                   
                   <div className="space-y-2">
                     <Label>Общ брой на персонала в процеси с висок риск от подкупване</Label>
+                    <p className="text-sm text-gray-600 mb-2">
+                      Общият брой от секцията "Чувствителен процес" по-долу.
+                    </p>
                     <Input
                       value={formData.iso37001.sites[0]?.totalEmployees || ""}
                       onChange={(e) => {
@@ -1690,9 +1693,6 @@ export function CertificationForm() {
                       }}
                       className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
                     />
-                    <p className="text-sm text-gray-600 mt-1">
-                      Това е общият брой от попълнените хора в секцията "Чувствителен процес" по-горе.
-                    </p>
                   </div>
 
                   {/* Чувствителни процеси */}
@@ -1945,6 +1945,9 @@ export function CertificationForm() {
                   
                   <div className="space-y-2">
                     <Label>Общ брой на персонала в процеси с висок риск от подкупване</Label>
+                    <p className="text-sm text-gray-600 mb-2">
+                      Общият брой от секцията "Чувствителен процес" по-долу.
+                    </p>
                     <Input
                       value={formData.iso37001.sites[0]?.totalEmployees || ""}
                       onChange={(e) => {
@@ -1955,9 +1958,6 @@ export function CertificationForm() {
                       }}
                       className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
                     />
-                    <p className="text-sm text-gray-600 mt-1">
-                      Това е общият брой от попълнените хора в секцията "Чувствителен процес" по-горе.
-                    </p>
                   </div>
 
                   {/* Чувствителни процеси */}
