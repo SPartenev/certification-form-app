@@ -2107,7 +2107,7 @@ export function CertificationForm() {
         {formData.applicationTypes.includes("Трансфер") && (
           <Card className="border-stone-200 bg-white">
             <CardHeader className="bg-orange-50">
-              <CardTitle className="text-stone-800">Секция 8. Трансфер на сертификация</CardTitle>
+              <CardTitle className="text-stone-800">Трансфер на сертификация</CardTitle>
               <CardDescription>
                 Тази информация служи за преценка на възможността за трансфер на сертификацията и за изготвяне на
                 оферта.
@@ -2222,7 +2222,7 @@ export function CertificationForm() {
         {formData.standards.length > 1 && (
           <Card className="border-stone-200 bg-white">
             <CardHeader className="bg-orange-50">
-              <CardTitle className="text-stone-800">Секция 9. Интегрирани системи</CardTitle>
+              <CardTitle className="text-stone-800">Интегрирани системи</CardTitle>
               <CardDescription>
                 Моля отбележете само тези, които са приложими за внедрената интегрирана система за управление:
               </CardDescription>
