@@ -288,9 +288,6 @@ export function CertificationForm() {
     t('multiSite.option2'),
     t('multiSite.option3'),
     t('multiSite.option4'),
-    t('multiSite.option5'),
-    t('multiSite.option6'),
-    t('multiSite.option7'),
   ]
 
   // Функция за преобразуване на английски ключове в български текстове
@@ -307,7 +304,7 @@ export function CertificationForm() {
       "iso27001": "ISO/IEC 27001:2022",
       "iso37001": "ISO 37001:2016",
       "iso37001_2025": "ISO 37001:2025",
-      "other": "Други"
+      "other": t('common.other')
     }
 
     // Схеми на стандартите
@@ -329,7 +326,7 @@ export function CertificationForm() {
 
     // Генериране на схемите на избраните стандарти
     const selectedSchemes = data.standards.map(standard => 
-      standardSchemes[standard] || "Неизвестна схема"
+      standardSchemes[standard] || t('unknown.scheme')
     )
     
     // Добавяне на скрито поле със схемите
@@ -340,23 +337,23 @@ export function CertificationForm() {
     
     // Преобразуване на езика на одита
     const languageTranslations: { [key: string]: string } = {
-      "bulgarian": "Български",
-      "english": "Английски"
+      "bulgarian": t('language.bulgarian'),
+      "english": t('language.english')
     }
     translatedData.auditLanguage = languageTranslations[data.auditLanguage] || data.auditLanguage
     
     // Преобразуване на нивото на автоматизация
     const automationTranslations: { [key: string]: string } = {
-      "low": "Ниско",
-      "medium": "Средно", 
-      "high": "Високо"
+      "low": t('risk.low'),
+      "medium": t('risk.medium'), 
+      "high": t('risk.high')
     }
     translatedData.iso14001.automation = automationTranslations[data.iso14001.automation] || data.iso14001.automation
     
     // Преобразуване на отговорите Да/Не
     const yesNoTranslations: { [key: string]: string } = {
-      "yes": "Да",
-      "no": "Не"
+      "yes": t('yes.no.yes'),
+      "no": t('yes.no.no')
     }
     translatedData.developNewProducts = yesNoTranslations[data.developNewProducts] || data.developNewProducts
     translatedData.manufactureProducts = yesNoTranslations[data.manufactureProducts] || data.manufactureProducts
@@ -364,21 +361,21 @@ export function CertificationForm() {
     
     // Преобразуване на ISO 27001 категории
     const categoryTranslations: { [key: string]: string } = {
-      "non-critical": "Организацията работи в бизнес сектори, които не са критични и няма голям обем нормативни изисквания",
-      "serves-critical": "Организацията обслужва клиенти от критични бизнес сектори",
-      "critical": "Организацията работи в критични бизнес сектори",
-      "standard-repetitive": "Процесите са стандартни с повтарящи се задачи, много служители с едни и същи задачи. Малко продукти и услуги",
-      "standard-non-repetitive": "Стандартни, но не повтарящи се процеси, с голям брой продукти или услуги",
-      "complex": "Сложни процеси, голям брой продукти и услуги, много бизнес звена",
-      "mature": "СУСИ е внедрена от повече от година и/или са внедрени други СУ",
-      "partial": "Някои елементи от други системи за управление са внедрени, но не всички",
-      "new": "Няма внедрени други СУ, СУСИ е внедрена преди по-малко от една година",
-      "simple": "Малко на брой или силно стандартизирани IT платформи, сървъри, операционни системи, бази данни, мрежи и др",
-      "moderate": "Няколко различни IT платформи, сървъри, операционни системи, бази данни, мрежи и др",
-      "complex-it": "Много на брой различни IT платформи, сървъри, операционни системи, бази данни, мрежи и др",
-      "minimal": "Незначителна или никаква зависимост от външни изпълнители/доставчици",
-      "high": "Организацията зависи в голяма степен от външни изпълнители или доставчици, които имат голямо въздействие върху важни бизнес процеси",
-      "extensive": "Има голям обем собствени разработки на софтуерни приложения"
+      "non-critical": t('business.non-critical'),
+      "serves-critical": t('business.serves-critical'),
+      "critical": t('business.critical'),
+      "standard-repetitive": t('process.standard-repetitive'),
+      "standard-non-repetitive": t('process.standard-non-repetitive'),
+      "complex": t('process.complex'),
+      "mature": t('maturity.mature'),
+      "partial": t('maturity.partial'),
+      "new": t('maturity.new'),
+      "simple": t('it.simple'),
+      "moderate": t('it.moderate'),
+      "complex-it": t('it.complex'),
+      "minimal": t('dependency.minimal'),
+      "high": t('dependency.high'),
+      "extensive": t('dependency.extensive')
     }
     
     translatedData.iso27001.category1 = categoryTranslations[data.iso27001.category1] || data.iso27001.category1
@@ -390,8 +387,8 @@ export function CertificationForm() {
     
     // Преобразуване на вида площадка
     const siteTypeTranslations: { [key: string]: string } = {
-      "main": "Основна",
-      "additional": "Допълнителна"
+      "main": t('certification.main'),
+      "additional": t('certification.additional')
     }
     
     translatedData.sites = data.sites.map(site => ({
@@ -478,9 +475,6 @@ export function CertificationForm() {
                 className="h-12 w-auto"
               />
             </div>
-            <div className="text-right">
-              <div className="text-sm text-stone-500">www.incert.bg</div>
-            </div>
           </div>
           <div className="mt-4">
             <CardTitle className="text-2xl font-bold text-stone-800">{t('form.title')}</CardTitle>
@@ -494,16 +488,16 @@ export function CertificationForm() {
       <form onSubmit={handleSubmit} className="space-y-8">
         <Card className="border-stone-200 bg-white">
           <CardHeader className="bg-orange-50">
-            <CardTitle className="text-stone-800">Вид на заявката</CardTitle>
-            <CardDescription>Изберете вида на заявката *</CardDescription>
+            <CardTitle className="text-stone-800">{t('section.applicationType')}</CardTitle>
+            <CardDescription>{t('section.chooseType')} *</CardDescription>
           </CardHeader>
           <CardContent className="pt-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { value: "new", label: "Нова сертификация" },
-                { value: "change", label: "Промяна в сертификация" },
-                { value: "renewal", label: "Подновяване" },
-                { value: "transfer", label: "Трансфер" },
+                { value: "new", label: t('application.new') },
+                { value: "change", label: t('application.change') },
+                { value: "renewal", label: t('application.renewal') },
+                { value: "transfer", label: t('application.transfer') },
               ].map((option) => (
                 <div
                   key={option.value}
@@ -527,7 +521,7 @@ export function CertificationForm() {
           <CardHeader className="bg-orange-50">
             <CardTitle className="text-stone-800 flex items-center gap-2">
               <Building2 className="h-5 w-5 text-orange-600" />
-              Данни за организацията
+{t('section.organizationInfo')}
             </CardTitle>
           </CardHeader>
           <CardContent className="pt-6 space-y-6">
@@ -569,7 +563,7 @@ export function CertificationForm() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="contactPersonName">Име и фамилия(лице за контакт) *</Label>
+                <Label htmlFor="contactPersonName">{t('company.contactPersonName')} *</Label>
                 <Input
                   id="contactPersonName"
                   value={formData.contactPersonName}
@@ -615,13 +609,13 @@ export function CertificationForm() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="additionalInfo">Допълнителна информация</Label>
+              <Label htmlFor="additionalInfo">{t('company.additionalInfo')}</Label>
               <Textarea
                 id="additionalInfo"
                 value={formData.additionalInfo}
                 onChange={(e) => setFormData((prev) => ({ ...prev, additionalInfo: e.target.value }))}
                 className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
-                placeholder="напр. относно искана промяна или друга информация от значение"
+                placeholder={t('placeholder.changeInfo')}
                 rows={3}
               />
             </div>
@@ -631,7 +625,7 @@ export function CertificationForm() {
         <Card className="border-stone-200 bg-white">
           <CardHeader className="bg-orange-50">
             <CardTitle className="text-stone-800">{t('standards.title')}:</CardTitle>
-            <CardDescription>Необходимо е да отбележите поне един стандарт, за да можете да изпратите заявката.</CardDescription>
+            <CardDescription>{t('standards.required')}</CardDescription>
           </CardHeader>
           <CardContent className="pt-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -664,14 +658,14 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <Building2 className="h-5 w-5 text-orange-600" />
-                Други стандарти
+{t('section.otherStandards')}
               </CardTitle>
-              <CardDescription>Допълнителна информация за други стандарти</CardDescription>
+              <CardDescription>{t('section.otherStandardsDescription')}</CardDescription>
             </CardHeader>
             <CardContent className="pt-6 space-y-6">
               <div className="space-y-2">
                 <Label>
-                  Моля, опишете подробно другите стандарти, за които кандидатствате, включително техните версии и специфични изисквания.
+                  {t('section.otherStandardsLabel')}
                 </Label>
                 <Textarea
                   value={formData.additionalInfo}
@@ -680,7 +674,7 @@ export function CertificationForm() {
                   }
                   className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
                   rows={4}
-                  placeholder="Например: ISO 50001:2018 - Енергийно управление, ISO 20000-1:2018 - IT услуги и др."
+                  placeholder={t('placeholder.otherStandards')}
                 />
               </div>
             </CardContent>
@@ -689,12 +683,12 @@ export function CertificationForm() {
 
         <Card className="border-stone-200 bg-white">
           <CardHeader className="bg-orange-50">
-            <CardTitle className="text-stone-800">Обхват на сертификация</CardTitle>
+            <CardTitle className="text-stone-800">{t('scope.title')}</CardTitle>
           </CardHeader>
           <CardContent className="pt-6 space-y-6">
             <div className="space-y-2">
               <Label htmlFor="certificationScope">
-                Кратко описание на дейностите, продуктите и/или процесите в обхвата *
+                {t('scope.description')} *
               </Label>
               <Textarea
                 id="certificationScope"
@@ -710,7 +704,7 @@ export function CertificationForm() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h4 className="font-semibold text-stone-800">Площадки</h4>
+                <h4 className="font-semibold text-stone-800">{t('scope.sites')}</h4>
               </div>
 
               {formData.sites.map((site, index) => (
@@ -729,28 +723,28 @@ export function CertificationForm() {
                   <CardContent className="pt-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label>Адрес на площадка {index + 1}</Label>
+                        <Label>{t('scope.siteAddress')} {index + 1}</Label>
                         <Input
                           value={site.address}
                           onChange={(e) => updateSite(index, "address", e.target.value)}
                           className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
-                          placeholder="Адрес на площадката"
+                          placeholder={t('placeholder.siteAddress')}
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label>Вид на площадката</Label>
+                        <Label>{t('scope.siteType')}</Label>
                         <Select value={site.type} onValueChange={(value) => updateSite(index, "type", value)}>
                           <SelectTrigger className="border-stone-200 focus:border-orange-500 focus:ring-orange-500">
-                            <SelectValue placeholder="Изберете вид" />
+                            <SelectValue placeholder={t('placeholder.selectType')} />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="main">Основна</SelectItem>
-                            <SelectItem value="additional">Допълнителна</SelectItem>
+                            <SelectItem value="main">{t('scope.main')}</SelectItem>
+                            <SelectItem value="temporary">{t('scope.temporary')}</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
                       <div className="space-y-2">
-                        <Label>Процеси, дейности, работно време, смени</Label>
+                        <Label>{t('scope.processes')}</Label>
                         <Textarea
                           value={site.processes}
                           onChange={(e) => updateSite(index, "processes", e.target.value)}
@@ -759,12 +753,12 @@ export function CertificationForm() {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label>Брой служители</Label>
+                        <Label>{t('scope.employees')}</Label>
                         <Input
                           value={site.employees}
                           onChange={(e) => updateSite(index, "employees", e.target.value)}
                           className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
-                          placeholder="Брой служители"
+                          placeholder={t('placeholder.employees')}
                         />
                       </div>
                     </div>
@@ -774,7 +768,7 @@ export function CertificationForm() {
               
               <div className="flex justify-end pt-4">
                 <Button type="button" onClick={addSite} variant="outline" size="sm">
-                  Добави площадка
+{t('scope.addSite')}
                 </Button>
               </div>
             </div>
@@ -782,9 +776,9 @@ export function CertificationForm() {
             {formData.sites.length > 1 && (
               <Card className="border-stone-100 bg-gray-50">
                 <CardHeader>
-                  <CardTitle className="text-sm text-gray-800">Управление на множество площадки</CardTitle>
+                  <CardTitle className="text-sm text-gray-800">{t('multiSite.title')}</CardTitle>
                   <CardDescription className="text-sm">
-                    Отбележете кои от следващите твърдения са приложими за Вашата система за управление
+                    {t('multiSite.description')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -810,11 +804,11 @@ export function CertificationForm() {
 
         <Card className="border-stone-200 bg-white">
           <CardHeader className="bg-orange-50">
-            <CardTitle className="text-stone-800">Допълнителна информация</CardTitle>
+            <CardTitle className="text-stone-800">{t('additional.title')}</CardTitle>
           </CardHeader>
           <CardContent className="pt-6 space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="outsourcedProcesses">Информация за процеси, възложени на външни изпълнители</Label>
+              <Label htmlFor="outsourcedProcesses">{t('additional.outsourced')}</Label>
               <Textarea
                 id="outsourcedProcesses"
                 value={formData.outsourcedProcesses}
@@ -825,19 +819,19 @@ export function CertificationForm() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="consultantServices">Информация за използвани консултантски услуги, ако има</Label>
+              <Label htmlFor="consultantServices">{t('additional.consultant')}</Label>
               <Input
                 id="consultantServices"
                 value={formData.consultantServices}
                 onChange={(e) => setFormData((prev) => ({ ...prev, consultantServices: e.target.value }))}
                 className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
-                placeholder="име на консултант"
+                placeholder={t('placeholder.consultant')}
               />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="regulatoryRequirements">
-                Информация за приложими за обхвата нормативни и други изисквания
+                {t('additional.regulatory')}
               </Label>
               <Textarea
                 id="regulatoryRequirements"
@@ -850,35 +844,35 @@ export function CertificationForm() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-3">
-                <Label>Разработвате ли нови продукти/услуги?</Label>
+                <Label>{t('additional.developProducts')}</Label>
                 <RadioGroup
                   value={formData.developNewProducts}
                   onValueChange={(value) => setFormData((prev) => ({ ...prev, developNewProducts: value }))}
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="yes" id="develop-yes" />
-                    <Label htmlFor="develop-yes">Да</Label>
+                    <Label htmlFor="develop-yes">{t('yes.no.yes')}</Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="no" id="develop-no" />
-                    <Label htmlFor="develop-no">Не</Label>
+                    <Label htmlFor="develop-no">{t('yes.no.no')}</Label>
                   </div>
                 </RadioGroup>
               </div>
 
               <div className="space-y-3">
-                <Label>Произвеждате ли продукти?</Label>
+                <Label>{t('additional.manufactureProducts')}</Label>
                 <RadioGroup
                   value={formData.manufactureProducts}
                   onValueChange={(value) => setFormData((prev) => ({ ...prev, manufactureProducts: value }))}
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="yes" id="manufacture-yes" />
-                    <Label htmlFor="manufacture-yes">Да</Label>
+                    <Label htmlFor="manufacture-yes">{t('yes.no.yes')}</Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="no" id="manufacture-no" />
-                    <Label htmlFor="manufacture-no">Не</Label>
+                    <Label htmlFor="manufacture-no">{t('yes.no.no')}</Label>
                   </div>
                 </RadioGroup>
               </div>
@@ -886,7 +880,7 @@ export function CertificationForm() {
 
             <div className="space-y-2">
               <Label htmlFor="otherCertifications">
-                Информация за други валидни сертификации на системи за управление
+                {t('additional.otherCertifications')}
               </Label>
               <Textarea
                 id="otherCertifications"
@@ -899,17 +893,17 @@ export function CertificationForm() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="auditLanguage">Език на одита *</Label>
+                <Label htmlFor="auditLanguage">{t('additional.auditLanguage')} *</Label>
                 <Input
                   id="auditLanguage"
                   value={formData.auditLanguage}
                   onChange={(e) => setFormData((prev) => ({ ...prev, auditLanguage: e.target.value }))}
                   className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
-                  placeholder="Например: Български, Английски, и др."
+                  placeholder={t('placeholder.auditLanguage')}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="auditDeadline">Краен срок за одита</Label>
+                <Label htmlFor="auditDeadline">{t('additional.auditDeadline')}</Label>
                 <Input
                   id="auditDeadline"
                   type="date"
@@ -928,13 +922,13 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <Shield className="h-5 w-5 text-orange-600" />
-                Безопасност и здраве при работа
+                {t('iso45001.title')}
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-6 space-y-4">
               <div className="space-y-2">
                 <Label>
-                  1. Основни опасности и рискове за здравето и безопасността при работа, свързани с дейността
+                  1. {t('iso45001.question1')}
                 </Label>
                 <Textarea
                   value={formData.iso45001.hazards}
@@ -947,7 +941,7 @@ export function CertificationForm() {
               </div>
               <div className="space-y-2">
                 <Label>
-                  2. Използвате ли опасни химически вещества и смеси в дейността си? Ако "да", моля посочете какви.
+                  2. {t('iso45001.question2')}
                 </Label>
                 <Textarea
                   value={formData.iso45001.chemicals}
@@ -960,8 +954,7 @@ export function CertificationForm() {
               </div>
               <div className="space-y-2">
                 <Label>
-                  3. Използвате ли инсталации и/или СПО по смисъла на националното законодателство? Ако "да", моля
-                  разяснете.
+                  3. {t('iso45001.question3')}
                 </Label>
                 <Textarea
                   value={formData.iso45001.installations}
@@ -973,7 +966,7 @@ export function CertificationForm() {
                 />
               </div>
               <div className="space-y-2">
-                <Label>4. Приложими нормативни изисквания, свързани с БЗР. Моля посочете.</Label>
+                <Label>4. {t('iso45001.question4')}</Label>
                 <Textarea
                   value={formData.iso45001.regulations}
                   onChange={(e) =>
@@ -985,8 +978,7 @@ export function CertificationForm() {
               </div>
               <div className="space-y-2">
                 <Label>
-                  5. Персонал, който работи извън площадката (напр. шофьори, монтажници и др.), или на временни
-                  площадки? Моля пояснете и посочете приблизителен брой.
+                  5. {t('iso45001.question5')}
                 </Label>
                 <Textarea
                   value={formData.iso45001.offSitePersonnel}
@@ -1002,7 +994,7 @@ export function CertificationForm() {
               </div>
               <div className="space-y-2">
                 <Label>
-                  6. През последните две години регистрирани ли са трудови злополуки? Ако "да", моля разяснете.
+                  6. {t('iso45001.question6')}
                 </Label>
                 <Textarea
                   value={formData.iso45001.accidents}
@@ -1015,8 +1007,7 @@ export function CertificationForm() {
               </div>
               <div className="space-y-2">
                 <Label>
-                  7. Водят ли се срещу вас съдебни дела за нарушаване на трудовото законодателство и/или по БЗР? Ако
-                  "да", моля разяснете.
+                  7. {t('iso45001.question7')}
                 </Label>
                 <Textarea
                   value={formData.iso45001.lawsuits}
@@ -1036,12 +1027,12 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <Leaf className="h-5 w-5 text-orange-600" />
-                Околна среда
+                {t('iso14001.title')}
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-6 space-y-4">
               <div className="space-y-2">
-                <Label>1. Значими аспекти на околната среда и свързаните с тях процеси.</Label>
+                <Label>1. {t('iso14001.question1')}</Label>
                 <Textarea
                   value={formData.iso14001.aspects}
                   onChange={(e) =>
@@ -1053,8 +1044,7 @@ export function CertificationForm() {
               </div>
               <div className="space-y-2">
                 <Label>
-                  2. Дейността извършва ли се в населено място или индустриална зона, селски район или защитена
-                  територия? Моля дайте пояснение.
+                  2. {t('iso14001.question2')}
                 </Label>
                 <Textarea
                   value={formData.iso14001.location}
@@ -1067,8 +1057,7 @@ export function CertificationForm() {
               </div>
               <div className="space-y-2">
                 <Label>
-                  3. Приложими нормативни изисквания и лицензи и разрешителни за управлението на околната среда. Моля
-                  посочете.
+                  3. {t('iso14001.question3')}
                 </Label>
                 <Textarea
                   value={formData.iso14001.requirements}
@@ -1081,7 +1070,7 @@ export function CertificationForm() {
               </div>
               <div className="space-y-2">
                 <Label>
-                  4. Има "непреки" аспекти на околната среда (напр. услуги за проектиране)? Моля опишете накратко.
+                  4. {t('iso14001.question4')}
                 </Label>
                 <Textarea
                   value={formData.iso14001.indirectAspects}
@@ -1097,8 +1086,7 @@ export function CertificationForm() {
               </div>
               <div className="space-y-2">
                 <Label>
-                  5. Рискове от значими екологични щети в резултат от съхранение на материали или ползването им? Моля
-                  опишете накратко.
+                  5. {t('iso14001.question5')}
                 </Label>
                 <Textarea
                   value={formData.iso14001.risks}
@@ -1110,7 +1098,7 @@ export function CertificationForm() {
                 />
               </div>
               <div className="space-y-3">
-                <Label>Ниво на автоматизация на процесите</Label>
+                <Label>6. {t('iso14001.question6')}</Label>
                 <RadioGroup
                   value={formData.iso14001.automation}
                   onValueChange={(value) =>
@@ -1120,15 +1108,15 @@ export function CertificationForm() {
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="low" id="auto-low" />
-                    <Label htmlFor="auto-low">Ниско</Label>
+                    <Label htmlFor="auto-low">{t('iso14001.automation.low')}</Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="medium" id="auto-medium" />
-                    <Label htmlFor="auto-medium">Средно</Label>
+                    <Label htmlFor="auto-medium">{t('iso14001.automation.medium')}</Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="high" id="auto-high" />
-                    <Label htmlFor="auto-high">Високо</Label>
+                    <Label htmlFor="auto-high">{t('iso14001.automation.high')}</Label>
                   </div>
                 </RadioGroup>
               </div>
@@ -1141,17 +1129,16 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <Lock className="h-5 w-5 text-orange-600" />
-                Сигурност на информацията
+                {t('iso27001.title')}
               </CardTitle>
               <CardDescription>
-                За всяка от категориите моля отбележете само едно твърдение, което най-точно описва ситуацията във
-                Вашата организация.
+                {t('iso27001.description')}
               </CardDescription>
             </CardHeader>
             <CardContent className="pt-6 space-y-6">
               <div className="space-y-4">
                 <div className="space-y-3">
-                  <Label className="font-semibold">Категория 1. Дейност на организацията и нормативни изисквания</Label>
+                  <Label className="font-semibold">{t('iso27001.category1')}</Label>
                   <RadioGroup
                     value={formData.iso27001.category1}
                     onValueChange={(value) =>
@@ -1161,27 +1148,26 @@ export function CertificationForm() {
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="non-critical" id="cat1-1" />
                       <Label htmlFor="cat1-1" className="text-sm leading-relaxed">
-                        Организацията работи в бизнес сектори, които не са критични и няма голям обем нормативни
-                        изисквания.
+                        {t('iso27001.category1.option1')}
                       </Label>
                     </div>
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="serves-critical" id="cat1-2" />
                       <Label htmlFor="cat1-2" className="text-sm leading-relaxed">
-                        Организацията обслужва клиенти от критични бизнес сектори.
+                        {t('iso27001.category1.option2')}
                       </Label>
                     </div>
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="critical" id="cat1-3" />
                       <Label htmlFor="cat1-3" className="text-sm leading-relaxed">
-                        Организацията работи в критични бизнес сектори.
+                        {t('iso27001.category1.option3')}
                       </Label>
                     </div>
                   </RadioGroup>
                 </div>
 
                 <div className="space-y-3">
-                  <Label className="font-semibold">Категория 2. Процеси и задачи</Label>
+                  <Label className="font-semibold">{t('iso27001.category2')}</Label>
                   <RadioGroup
                     value={formData.iso27001.category2}
                     onValueChange={(value) =>
@@ -1191,20 +1177,19 @@ export function CertificationForm() {
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="standard-repetitive" id="cat2-1" />
                       <Label htmlFor="cat2-1" className="text-sm leading-relaxed">
-                        Процесите са стандартни с повтарящи се задачи, много служители с едни и същи задачи. Малко
-                        продукти и услуги.
+                        {t('iso27001.category2.option1')}
                       </Label>
                     </div>
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="standard-non-repetitive" id="cat2-2" />
                       <Label htmlFor="cat2-2" className="text-sm leading-relaxed">
-                        Стандартни, но не повтарящи се процеси, с голям брой продукти или услуги.
+                        {t('iso27001.category2.option2')}
                       </Label>
                     </div>
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="complex" id="cat2-3" />
                       <Label htmlFor="cat2-3" className="text-sm leading-relaxed">
-                        Сложни процеси, голям брой продукти и услуги, много бизнес звена
+                        {t('iso27001.category2.option3')}
                       </Label>
                     </div>
                   </RadioGroup>
@@ -1212,7 +1197,7 @@ export function CertificationForm() {
 
                 <div className="space-y-3">
                   <Label className="font-semibold">
-                    Категория 3. Система за управление на сигурността на информацията
+                    {t('iso27001.category3')}
                   </Label>
                   <RadioGroup
                     value={formData.iso27001.category3}
@@ -1223,26 +1208,26 @@ export function CertificationForm() {
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="mature" id="cat3-1" />
                       <Label htmlFor="cat3-1" className="text-sm leading-relaxed">
-                        СУСИ е внедрена от повече от година и/или са внедрени други СУ.
+                        {t('iso27001.category3.option1')}
                       </Label>
                     </div>
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="partial" id="cat3-2" />
                       <Label htmlFor="cat3-2" className="text-sm leading-relaxed">
-                        Някои елементи от други системи за управление са внедрени, но не всички.
+                        {t('iso27001.category3.option2')}
                       </Label>
                     </div>
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="new" id="cat3-3" />
                       <Label htmlFor="cat3-3" className="text-sm leading-relaxed">
-                        Няма внедрени други СУ, СУСИ е внедрена преди по-малко от една година.
+                        {t('iso27001.category3.option3')}
                       </Label>
                     </div>
                   </RadioGroup>
                 </div>
 
                 <div className="space-y-3">
-                  <Label className="font-semibold">Категория 4. Сложност на IT инфраструктурата</Label>
+                  <Label className="font-semibold">{t('iso27001.category4')}</Label>
                   <RadioGroup
                     value={formData.iso27001.category4}
                     onValueChange={(value) =>
@@ -1252,20 +1237,19 @@ export function CertificationForm() {
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="simple" id="cat4-1" />
                       <Label htmlFor="cat4-1" className="text-sm leading-relaxed">
-                        Малко на брой или силно стандартизирани IT платформи, сървъри, операционни системи, бази данни,
-                        мрежи и др.
+                        {t('iso27001.category4.option1')}
                       </Label>
                     </div>
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="moderate" id="cat4-2" />
                       <Label htmlFor="cat4-2" className="text-sm leading-relaxed">
-                        Няколко различни IT платформи, сървъри, операционни системи, бази данни, мрежи и др.
+                        {t('iso27001.category4.option2')}
                       </Label>
                     </div>
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="complex-it" id="cat4-3" />
                       <Label htmlFor="cat4-3" className="text-sm leading-relaxed">
-                        Много на брой различни IT платформи, сървъри, операционни системи, бази данни, мрежи и др.
+                        {t('iso27001.category4.option3')}
                       </Label>
                     </div>
                   </RadioGroup>
@@ -1273,7 +1257,7 @@ export function CertificationForm() {
 
                 <div className="space-y-3">
                   <Label className="font-semibold">
-                    Категория 5. Възлагане на външни изпълнители, доставчици (вкл. облачни услуги)
+                    {t('iso27001.category5')}
                   </Label>
                   <RadioGroup
                     value={formData.iso27001.category5}
@@ -1284,28 +1268,26 @@ export function CertificationForm() {
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="minimal" id="cat5-1" />
                       <Label htmlFor="cat5-1" className="text-sm leading-relaxed">
-                        Незначителна или никаква зависимост от външни изпълнители/доставчици.
+                        {t('iso27001.category5.option1')}
                       </Label>
                     </div>
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="moderate" id="cat5-2" />
                       <Label htmlFor="cat5-2" className="text-sm leading-relaxed">
-                        Организацията зависи от външни изпълнители/доставчици за някои бизнес процеси (не за всички и не
-                        за важните).
+                        {t('iso27001.category5.option2')}
                       </Label>
                     </div>
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="high" id="cat5-3" />
                       <Label htmlFor="cat5-3" className="text-sm leading-relaxed">
-                        Организацията зависи в голяма степен от външни изпълнители или доставчици, които имат голямо
-                        въздействие върху важни бизнес процеси.
+                        {t('iso27001.category5.option3')}
                       </Label>
                     </div>
                   </RadioGroup>
                 </div>
 
                 <div className="space-y-3">
-                  <Label className="font-semibold">Категория 6. Степен на развитие на информационните системи</Label>
+                  <Label className="font-semibold">{t('iso27001.category6')}</Label>
                   <RadioGroup
                     value={formData.iso27001.category6}
                     onValueChange={(value) =>
@@ -1315,21 +1297,19 @@ export function CertificationForm() {
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="minimal" id="cat6-1" />
                       <Label htmlFor="cat6-1" className="text-sm leading-relaxed">
-                        Липсва или има в много малка степен собствени разработки на софтуерни приложения (информационни
-                        системи).
+                        {t('iso27001.category6.option1')}
                       </Label>
                     </div>
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="moderate" id="cat6-2" />
                       <Label htmlFor="cat6-2" className="text-sm leading-relaxed">
-                        Има няколко собствени (или възложени на външни изпълнители) разработки на софтуерни приложения
-                        за някои важни бизнес процеси.
+                        {t('iso27001.category6.option2')}
                       </Label>
                     </div>
                     <div className="flex items-start space-x-2">
                       <RadioGroupItem value="extensive" id="cat6-3" />
                       <Label htmlFor="cat6-3" className="text-sm leading-relaxed">
-                        Има голям обем собствени разработки на софтуерни приложения.
+                        {t('iso27001.category6.option3')}
                       </Label>
                     </div>
                   </RadioGroup>
@@ -1339,12 +1319,11 @@ export function CertificationForm() {
               <Separator />
 
               <div className="space-y-4">
-                <h4 className="font-semibold text-stone-800">Категории служители</h4>
+                <h4 className="font-semibold text-stone-800">{t('iso27001.employeeCategories.title')}</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label>
-                      Достъп само за четене: Служители с достъп единствено за четене на информацията, необходима за
-                      изпълнение на техните задължения.
+                      {t('iso27001.access.readonly')}
                     </Label>
                     <Input
                       value={formData.iso27001.employees.readOnly}
@@ -1358,13 +1337,12 @@ export function CertificationForm() {
                         }))
                       }
                       className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
-                      placeholder="Брой в категорията и коментар"
+                      placeholder={t('placeholder.categoryCount')}
                     />
                   </div>
                   <div className="space-y-2">
                     <Label>
-                      Без физически достъп: Лица, които нямат достъп до съоръженията за обработка на информация,
-                      включени в обхвата на СУСИ.
+                      {t('iso27001.access.nophysical')}
                     </Label>
                     <Input
                       value={formData.iso27001.employees.noPhysicalAccess}
@@ -1378,12 +1356,12 @@ export function CertificationForm() {
                         }))
                       }
                       className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
-                      placeholder="Брой в категорията и коментар"
+                      placeholder={t('placeholder.categoryCount')}
                     />
                   </div>
                   <div className="space-y-2">
                     <Label>
-                      Ограничен достъп: Лица, които имат специфичен, демонстриран ограничен достъп до съоръженията.
+                      {t('iso27001.access.limited')}
                     </Label>
                     <Input
                       value={formData.iso27001.employees.limitedAccess}
@@ -1397,13 +1375,12 @@ export function CertificationForm() {
                         }))
                       }
                       className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
-                      placeholder="Брой в категорията и коментар"
+                      placeholder={t('placeholder.categoryCount')}
                     />
                   </div>
                   <div className="space-y-2">
                     <Label>
-                      Пълен достъп и стриктни ограничения: Лица с наложени ограничения за предотвратяване на
-                      разкриването на информация.
+                      {t('iso27001.access.full')}
                     </Label>
                     <Input
                       value={formData.iso27001.employees.fullAccessRestricted}
@@ -1417,7 +1394,7 @@ export function CertificationForm() {
                         }))
                       }
                       className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
-                      placeholder="Брой в категорията и коментар"
+                      placeholder={t('placeholder.categoryCount')}
                     />
                   </div>
                 </div>
@@ -1431,14 +1408,13 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <Utensils className="h-5 w-5 text-orange-600" />
-                Безопасност на храните
+                {t('iso22000.title')}
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-6 space-y-4">
               <div className="space-y-2">
                 <Label>
-                  Брой HACCP планове със съответните им имена за всяка площадка в обхвата на сертификация, вкл.
-                  опасностите във всеки HACCP план.
+                  {t('iso22000.haccpPlans')}
                 </Label>
                 <Textarea
                   value={formData.iso22000.haccp}
@@ -1451,8 +1427,7 @@ export function CertificationForm() {
               </div>
               <div className="space-y-2">
                 <Label>
-                  Описание на продукти и процеси, продуктови линии, персонал, вид и разнообразие на задачите, които
-                  засягат БХП, разработване на продукти, собствени лабораторни изпитвания и др.
+                  {t('iso22000.description')}
                 </Label>
                 <Textarea
                   value={formData.iso22000.products}
@@ -1465,8 +1440,7 @@ export function CertificationForm() {
               </div>
               <div className="space-y-2">
                 <Label>
-                  Информация за ниво на автоматизация, използване на затворени производствени системи, други технологии,
-                  механизация, ръчен труд.
+                  {t('iso22000.automation')}
                 </Label>
                 <Textarea
                   value={formData.iso22000.automation}
@@ -1486,20 +1460,19 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <Car className="h-5 w-5 text-orange-600" />
-                Безопасност на движението
+                ISO 39001:2012 {t('iso39001.subtitle')}
               </CardTitle>
               <CardDescription>
-                Отбележете едно или повече от следващите твърдения, които са приложими за Вашата система за управление
-                на безопасността на движението:
+                {t('iso39001.description')}
               </CardDescription>
             </CardHeader>
             <CardContent className="pt-6 space-y-6">
               <div className="space-y-3">
                 {[
-                  "Служителите използват автомобилен транспорт до и от работа, или по време на работа (публичен транспорт или частни превозни средства в качеството на пътници или водачи, и като пешеходци или велосипедисти).",
-                  "Организацията извършва транспорт на стоки и пътници, включително и чрез подизпълнители.",
-                  "Организацията, извършва дейности, които генерират трафик към и от места, контролирани или повлияни от организацията (напр. супермаркети, училища или др. места с много посетители).",
-                  "Организацията предоставя услуги и продукти за системата за движение по пътищата (напр. транспортни услуги, управление, планиране, проектиране, изграждане и поддържане на инфраструктура, превозни средства и свързани продукти, спешна медицинска помощ, грижи при травми, рехабилитация, дейности по контрола и законодателни дейности).",
+                  t('iso39001.statement1'),
+                  t('iso39001.statement2'),
+                  t('iso39001.statement3'),
+                  t('iso39001.statement4'),
                 ].map((statement, index) => (
                   <div key={index} className="flex items-start space-x-3">
                     <Checkbox
@@ -1535,8 +1508,7 @@ export function CertificationForm() {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <Label>
-                    Нормативни изисквания и лицензи/разрешителни за управлението на безопасността на движението по
-                    пътищата. Моля посочете.
+                    {t('iso39001.requirements')}
                   </Label>
                   <Textarea
                     value={formData.iso39001.requirements}
@@ -1548,7 +1520,7 @@ export function CertificationForm() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>Моля посочете кои изисквания на ISO 39001 са определени като неприложими.</Label>
+                  <Label>{t('iso39001.nonApplicable')}</Label>
                   <Textarea
                     value={formData.iso39001.nonApplicable}
                     onChange={(e) =>
@@ -1563,8 +1535,7 @@ export function CertificationForm() {
                 </div>
                 <div className="space-y-2">
                   <Label>
-                    През последните 12 месеца възниквали ли са ПТП с участието на служители или в района, контролиран от
-                    организацията? Ако "да", пояснете.
+                    {t('iso39001.accidents')}
                   </Label>
                   <Textarea
                     value={formData.iso39001.accidents}
@@ -1585,16 +1556,15 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <AlertTriangle className="h-5 w-5 text-orange-600" />
-                {t('antiBribery.title')}
+                {t('iso37001.title')}
               </CardTitle>
-              <CardDescription>{t('antiBribery.subtitle')}</CardDescription>
+              <CardDescription>{t('iso37001.subtitle')}</CardDescription>
             </CardHeader>
             <CardContent className="pt-6 space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>
-                    Има ли процеси и/или дейности, извън обхвата на сертификация. Ако "да", посочете кои и аргументите
-                    да не бъдат включени.
+                    {t('iso37001.processesOutOfScope')}
                   </Label>
                   <Textarea
                     value={formData.iso37001.processesOutOfScope}
@@ -1610,8 +1580,7 @@ export function CertificationForm() {
                 </div>
                 <div className="space-y-2">
                   <Label>
-                    Държава/-и, в които се осъществяват дейностите (Не е обвързано само с площадката. Напр. от офис в
-                    България могат да бъдат обслужвани клиенти в различни държави).
+                    {t('iso37001.countries')}
                   </Label>
                   <Textarea
                     value={formData.iso37001.countries}
@@ -1626,10 +1595,7 @@ export function CertificationForm() {
 
               <div className="space-y-2">
                 <Label>
-                  Посочете приложими нормативни изисквания, договорни и професионални ангажименти и задължения (напр.
-                  нормативни изисквания за законното упражняване на дейността и доказателства, че са изпълнени – номер
-                  на лиценз, разрешително, връзка към публичен регистър; дългосрочни договори в изпълнение – напр.
-                  такива, които имат още поне две години срок за изпълнение).
+                  {t('iso37001.requirements')}
                 </Label>
                 <Textarea
                   value={formData.iso37001.requirements}
@@ -1644,16 +1610,15 @@ export function CertificationForm() {
               <Separator />
 
               <div className="space-y-4">
-                <h4 className="font-semibold text-stone-800">Информация за площадки и чувствителни процеси</h4>
+                <h4 className="font-semibold text-stone-800">{t('iso37001.sitesInfo')}</h4>
                 <p className="text-sm text-stone-600">
-                  Моля попълнете отделна таблица за всеки адрес, който желаете да бъде включен в обхвата на
-                  сертификация.
+                  {t('iso37001.sitesInfoDescription')}
                 </p>
 
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>Адрес на площадката</Label>
+                      <Label>{t('iso37001.siteAddress')}</Label>
                       <Input
                         value={formData.iso37001.sites[0]?.address || ""}
                         onChange={(e) => {
@@ -1666,7 +1631,7 @@ export function CertificationForm() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Вид площадката (напр. централен офис, търговски офис, др.)</Label>
+                      <Label>{t('iso37001.siteType')}</Label>
                       <Input
                         value={formData.iso37001.sites[0]?.type || ""}
                         onChange={(e) => {
@@ -1681,9 +1646,9 @@ export function CertificationForm() {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label>{t('antiBribery.totalEmployees')}</Label>
+                    <Label>{t('iso37001.totalEmployees')}</Label>
                     <p className="text-sm text-gray-600 mb-2">
-                      {t('antiBribery.totalEmployeesHelp')}
+                      {t('iso37001.totalEmployeesHelp')}
                     </p>
                     <Input
                       value={formData.iso37001.sites[0]?.totalEmployees || ""}
@@ -1699,7 +1664,7 @@ export function CertificationForm() {
 
                   {/* Чувствителни процеси */}
                   <div className="bg-stone-50 p-4 rounded-lg border border-stone-200">
-                    <h4 className="text-lg font-semibold text-stone-700 mb-4">{t('antiBribery.sensitiveProcess')}</h4>
+                    <h4 className="text-lg font-semibold text-stone-700 mb-4">{t('iso37001.sensitiveProcesses')}</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {[
                         t('processes.strategicManagement'),
@@ -1725,7 +1690,7 @@ export function CertificationForm() {
                           <Label className="text-sm flex-1">{process}</Label>
                           <Input
                             className="w-20 border-stone-200 focus:border-orange-500 focus:ring-orange-500"
-                            placeholder="Брой"
+                            placeholder={t('placeholder.count')}
                             value={formData.iso37001.sites[0]?.processes[process] || ""}
                             onChange={(e) => {
                               const newSites = [...formData.iso37001.sites]
@@ -1743,7 +1708,7 @@ export function CertificationForm() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label>Общ брой на персонала в процеси с нисък риск</Label>
+                  <Label>{t('iso37001.lowRiskEmployees')}</Label>
                   <Input
                     value={formData.iso37001.lowRiskEmployees}
                     onChange={(e) =>
@@ -1777,8 +1742,7 @@ export function CertificationForm() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>
-                    Юридически лица, върху които организацията има контрол (напр. чрез собственост, участие в
-                    управителните органи и др.)
+                    {t('iso37001.controlledEntities')}
                   </Label>
                   <Textarea
                     value={formData.iso37001.controlledEntities}
@@ -1794,8 +1758,7 @@ export function CertificationForm() {
                 </div>
                 <div className="space-y-2">
                   <Label>
-                    Юридически лица, които имат контрол върху организацията (напр. чрез собственост, участие в
-                    управителните органи и др.)
+                    {t('iso37001.controllingEntities')}
                   </Label>
                   <Textarea
                     value={formData.iso37001.controllingEntities}
@@ -1813,9 +1776,7 @@ export function CertificationForm() {
 
               <div className="space-y-2">
                 <Label>
-                  Лица на ръководни длъжности или на длъжности на материално изпълнение, били ли са в това си качество
-                  обект на разследване, включително повдигани ли са им обвинения, които попадат в определението за
-                  "подкупване" през последните пет години? Ако "да", молим да предоставите допълнителна информация.
+                  {t('iso37001.investigations')}
                 </Label>
                 <Textarea
                   value={formData.iso37001.investigations}
@@ -1828,7 +1789,7 @@ export function CertificationForm() {
               </div>
 
               <div className="space-y-2">
-                <Label>Друга информация, която би имала отношение към сертификацията на СУБП?</Label>
+                <Label>{t('iso37001.otherInfo')}</Label>
                 <Textarea
                   value={formData.iso37001.additionalInfo}
                   onChange={(e) =>
@@ -1850,7 +1811,7 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <AlertTriangle className="h-5 w-5 text-orange-600" />
-                {t('antiBribery.title')}
+                {t('iso37001.title')}
               </CardTitle>
               <CardDescription>{t('antiBribery.subtitle')}</CardDescription>
             </CardHeader>
@@ -1858,8 +1819,7 @@ export function CertificationForm() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>
-                    Има ли процеси и/или дейности, извън обхвата на сертификация. Ако "да", посочете кои и аргументите
-                    да не бъдат включени.
+                    {t('iso37001.processesOutOfScope')}
                   </Label>
                   <Textarea
                     value={formData.iso37001.processesOutOfScope}
@@ -1875,8 +1835,7 @@ export function CertificationForm() {
                 </div>
                 <div className="space-y-2">
                   <Label>
-                    Държава/-и, в които се осъществяват дейностите (Не е обвързано само с площадката. Напр. от офис в
-                    България могат да бъдат обслужвани клиенти в различни държави).
+                    {t('iso37001.countries')}
                   </Label>
                   <Textarea
                     value={formData.iso37001.countries}
@@ -1891,10 +1850,7 @@ export function CertificationForm() {
 
               <div className="space-y-2">
                 <Label>
-                  Посочете приложими нормативни изисквания, договорни и професионални ангажименти и задължения (напр.
-                  нормативни изисквания за законното упражняване на дейността и доказателства, че са изпълнени – номер
-                  на лиценз, разрешително, връзка към публичен регистър; дългосрочни договори в изпълнение – напр.
-                  такива, които имат още поне две години срок за изпълнение).
+                  {t('iso37001.requirements')}
                 </Label>
                 <Textarea
                   value={formData.iso37001.requirements}
@@ -1909,16 +1865,15 @@ export function CertificationForm() {
               <Separator />
 
               <div className="space-y-4">
-                <h4 className="font-semibold text-stone-800">Информация за площадки и чувствителни процеси</h4>
+                <h4 className="font-semibold text-stone-800">{t('iso37001.sitesInfo')}</h4>
                 <p className="text-sm text-stone-600">
-                  Моля попълнете отделна таблица за всеки адрес, който желаете да бъде включен в обхвата на
-                  сертификация.
+                  {t('iso37001.sitesInfoDescription')}
                 </p>
 
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>Адрес на площадката</Label>
+                      <Label>{t('iso37001.siteAddress')}</Label>
                       <Input
                         value={formData.iso37001.sites[0]?.address || ""}
                         onChange={(e) => {
@@ -1931,7 +1886,7 @@ export function CertificationForm() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Вид площадката (напр. централен офис, търговски офис, др.)</Label>
+                      <Label>{t('iso37001.siteType')}</Label>
                       <Input
                         value={formData.iso37001.sites[0]?.type || ""}
                         onChange={(e) => {
@@ -1946,9 +1901,9 @@ export function CertificationForm() {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label>{t('antiBribery.totalEmployees')}</Label>
+                    <Label>{t('iso37001.totalEmployees')}</Label>
                     <p className="text-sm text-gray-600 mb-2">
-                      {t('antiBribery.totalEmployeesHelp')}
+                      {t('iso37001.totalEmployeesHelp')}
                     </p>
                     <Input
                       value={formData.iso37001.sites[0]?.totalEmployees || ""}
@@ -1964,7 +1919,7 @@ export function CertificationForm() {
 
                   {/* Чувствителни процеси */}
                   <div className="bg-stone-50 p-4 rounded-lg border border-stone-200">
-                    <h4 className="text-lg font-semibold text-stone-700 mb-4">{t('antiBribery.sensitiveProcess')}</h4>
+                    <h4 className="text-lg font-semibold text-stone-700 mb-4">{t('iso37001.sensitiveProcesses')}</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {[
                         t('processes.strategicManagement'),
@@ -1990,7 +1945,7 @@ export function CertificationForm() {
                           <Label className="text-sm flex-1">{process}</Label>
                           <Input
                             className="w-20 border-stone-200 focus:border-orange-500 focus:ring-orange-500"
-                            placeholder="Брой"
+                            placeholder={t('placeholder.count')}
                             value={formData.iso37001.sites[0]?.processes[process] || ""}
                             onChange={(e) => {
                               const newSites = [...formData.iso37001.sites]
@@ -2008,7 +1963,7 @@ export function CertificationForm() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label>Общ брой на персонала в процеси с нисък риск</Label>
+                  <Label>{t('iso37001.lowRiskEmployees')}</Label>
                   <Input
                     value={formData.iso37001.lowRiskEmployees}
                     onChange={(e) =>
@@ -2055,8 +2010,7 @@ export function CertificationForm() {
                 </div>
                 <div className="space-y-2">
                   <Label>
-                    Юридически лица, които имат контрол върху организацията (напр. чрез собственост, участие в
-                    управителните органи и др.)
+                    {t('iso37001.controllingEntities')}
                   </Label>
                   <Textarea
                     value={formData.iso37001.controllingEntities}
@@ -2074,9 +2028,7 @@ export function CertificationForm() {
 
               <div className="space-y-2">
                 <Label>
-                  Лица на ръководни длъжности или на длъжности на материално изпълнение, били ли са в това си качество
-                  обект на разследване, включително повдигани ли са им обвинения, които попадат в определението за
-                  "подкупване" през последните пет години? Ако "да", молим да предоставите допълнителна информация.
+                  {t('iso37001.investigations')}
                 </Label>
                 <Textarea
                   value={formData.iso37001.investigations}
@@ -2089,7 +2041,7 @@ export function CertificationForm() {
               </div>
 
               <div className="space-y-2">
-                <Label>Друга информация, която би имала отношение към сертификацията на СУБП?</Label>
+                <Label>{t('iso37001.otherInfo')}</Label>
                 <Textarea
                   value={formData.iso37001.additionalInfo}
                   onChange={(e) =>
@@ -2106,10 +2058,10 @@ export function CertificationForm() {
           </Card>
         )}
 
-        {formData.applicationTypes.includes("Трансфер") && (
+        {formData.applicationTypes.includes("transfer") && (
           <Card className="border-stone-200 bg-white">
             <CardHeader className="bg-orange-50">
-              <CardTitle className="text-stone-800">Трансфер на сертификация</CardTitle>
+              <CardTitle className="text-stone-800">{t('transfer.title')}</CardTitle>
               <CardDescription>
                 Тази информация служи за преценка на възможността за трансфер на сертификацията и за изготвяне на
                 оферта.
@@ -2118,8 +2070,7 @@ export function CertificationForm() {
             <CardContent className="pt-6 space-y-6">
               <div className="space-y-3">
                 <Label>
-                  Валиден ли е сертификатът, който е обект на трансфер (включително валидността му не е била прекратена
-                  от органа за сертификация).
+                  {t('transfer.validCertificate')}
                 </Label>
                 <RadioGroup
                   value={formData.transfer.validCertificate}
@@ -2130,17 +2081,17 @@ export function CertificationForm() {
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="yes" id="valid-yes" />
-                    <Label htmlFor="valid-yes">Да</Label>
+                    <Label htmlFor="valid-yes">{t('yes.no.yes')}</Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="no" id="valid-no" />
-                    <Label htmlFor="valid-no">Не</Label>
+                    <Label htmlFor="valid-no">{t('yes.no.no')}</Label>
                   </div>
                 </RadioGroup>
               </div>
 
               <div className="space-y-2">
-                <Label>Моля посочете причините за трансфера.</Label>
+                <Label>{t('transfer.reasons')}</Label>
                 <Textarea
                   value={formData.transfer.reasons}
                   onChange={(e) =>
@@ -2152,7 +2103,7 @@ export function CertificationForm() {
               </div>
 
               <div className="space-y-2">
-                <Label>Получавали ли сте оплаквания от клиенти или други? Ако "да", моля пояснете.</Label>
+                <Label>{t('transfer.complaints')}</Label>
                 <Textarea
                   value={formData.transfer.complaints}
                   onChange={(e) =>
@@ -2165,7 +2116,7 @@ export function CertificationForm() {
 
               <div className="space-y-2">
                 <Label>
-                  Нормативни изисквания, които ви задължават да притежавате валиден сертификат? Ако "да", моля опишете.
+                  {t('transfer.requirements')}
                 </Label>
                 <Textarea
                   value={formData.transfer.requirements}
@@ -2183,11 +2134,11 @@ export function CertificationForm() {
                 </Label>
                 <div className="space-y-3">
                   {[
-                    "Последният издаден валиден сертификат.",
-                    "Доклад от етап 2 на първоначален одит или последния одит за подновяване на сертификация (което е приложимо).",
-                    "Доклад от последния проведен надзорен одит (ако е приложимо).",
-                    "Доказателства, че всички несъответствия, описани в докладите, са били закрити или са одобрени планове за КД.",
-                    "Програма за одитите в сертификационния цикъл, предоставена от органа за сертификация, който е издал сертификата.",
+                    t('transfer.doc1'),
+                    t('transfer.doc2'),
+                    t('transfer.doc3'),
+                    t('transfer.doc4'),
+                    t('transfer.doc5'),
                   ].map((document, index) => (
                     <div key={index} className="flex items-start space-x-3">
                       <Checkbox
@@ -2224,20 +2175,20 @@ export function CertificationForm() {
         {formData.standards.length > 1 && (
           <Card className="border-stone-200 bg-white">
             <CardHeader className="bg-orange-50">
-              <CardTitle className="text-stone-800">Интегрирани системи</CardTitle>
+              <CardTitle className="text-stone-800">{t('integrated.title')}</CardTitle>
               <CardDescription>
-                Моля отбележете само тези, които са приложими за внедрената интегрирана система за управление:
+                {t('integrated.description')}
               </CardDescription>
             </CardHeader>
             <CardContent className="pt-6 space-y-3">
               {[
-                "Разработена е обща документация на интегрираната система за управление, включително подробни работни инструкции;",
-                "На прегледите от ръководството се разглеждат общата бизнес стратегия и планове за развитие.",
-                "При вътрешните одити се използва \"интегриран подход\".",
-                "Политиката и целите са разработени интегрирано т.е. общи са за интегрираната система.",
-                "В управлението на процесите се използва \"интегриран подход\".",
-                "При прилагането на мерки за подобрение се използва \"интегриран подход\" (напр. изпълнение на коригиращи действия, измерване, непрекъснато подобряване).",
-                "Отговорностите в системата за управление са определени \"интегрирано\".",
+                t('integrated.statement1'),
+                t('integrated.statement2'),
+                t('integrated.statement3'),
+                t('integrated.statement4'),
+                t('integrated.statement5'),
+                t('integrated.statement6'),
+                t('integrated.statement7'),
               ].map((statement, index) => (
                 <div key={index} className="flex items-start space-x-3">
                   <Checkbox
@@ -2271,11 +2222,11 @@ export function CertificationForm() {
 
         <Card className="border-stone-200 bg-white">
           <CardHeader className="bg-orange-50">
-            <CardTitle className="text-stone-800">Попълнил</CardTitle>
+            <CardTitle className="text-stone-800">{t('form.completedBy')}</CardTitle>
           </CardHeader>
           <CardContent className="pt-6 space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="filledBy">Попълнил (име, фамилия, длъжност) *</Label>
+              <Label htmlFor="filledBy">{t('form.filledIn')} *</Label>
               <Input
                 id="filledBy"
                 value={formData.filledBy}
@@ -2287,7 +2238,7 @@ export function CertificationForm() {
 
             <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
               <p className="text-sm text-stone-800">
-                Ще разгледаме заявката Ви в рамките на работния ден. Ще се свържем с Вас по телефона, ако са необходими уточнения, след което ще получите индивидуална оферта на посочения от Вас имейл.
+                {t('form.reviewMessage')}
               </p>
             </div>
 
@@ -2300,12 +2251,12 @@ export function CertificationForm() {
               {isSubmitting ? (
                 <>
                   <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                  Изпраща се...
+                  {t('form.submitting')}
                 </>
               ) : (
                 <>
                   <Send className="h-5 w-5 mr-2" />
-                  Изпрати заявката
+                  {t('form.submitButton')}
                 </>
               )}
             </Button>
