@@ -280,17 +280,17 @@ export function CertificationForm() {
     { id: "iso27001", label: "ISO/IEC 27001:2022", icon: Lock, color: "bg-orange-500" },
     { id: "iso37001", label: t('standards.iso37001'), icon: AlertTriangle, color: "bg-orange-500" },
     { id: "iso37001_2025", label: t('standards.iso37001_2025'), icon: AlertTriangle, color: "bg-orange-500" },
-    { id: "other", label: "Други", icon: Building2, color: "bg-orange-500" },
+    { id: "other", label: t('common.other'), icon: Building2, color: "bg-orange-500" },
   ]
 
   const multiSiteOptions = [
-    "Организацията има една обща система за управление за всички площадки.",
-    "Организацията има единно централно управление, което е част от нея и не е възложено на външен изпълнител.",
-    "Централното управление има правомощия да разработва, внедрява и поддържа единната система за управление за всички площадки в обхвата на сертификация.",
-    "Провежда се общ преглед от ръководството за централното управление и площадките.",
-    "Всички площадки са включени в програмата за вътрешни одити на организацията.",
-    "Централното управление носи отговорност за събирането и анализа на данни от всички площадки.",
-    "Централното управление има право и възможност да налага следните промени в процесите на отделните площадки (в системата и документацията ѝ, в резултат от проведени прегледи от ръководството, в резултат от оплаквания, в резултат от коригиращи действия, в резултат на вътрешни одити и оценяване на резултатите и промени, произтичащи от нормативни изисквания, относими към приложимите стандарти).",
+    t('multiSite.option1'),
+    t('multiSite.option2'),
+    t('multiSite.option3'),
+    t('multiSite.option4'),
+    t('multiSite.option5'),
+    t('multiSite.option6'),
+    t('multiSite.option7'),
   ]
 
   // Функция за преобразуване на английски ключове в български текстове
@@ -312,15 +312,15 @@ export function CertificationForm() {
 
     // Схеми на стандартите
     const standardSchemes: { [key: string]: string } = {
-      "iso9001": "СУК",
-      "iso14001": "СУОС", 
-      "iso22000": "СУБХП",
-      "iso27001": "СУСИ",
-      "iso37001": "СУБП",
-      "iso37001_2025": "СУБП",
-      "iso39001": "СУБДП",
-      "iso45001": "СУЗБР",
-      "other": "Други"
+      "iso9001": t('schemes.iso9001'),
+      "iso14001": t('schemes.iso14001'), 
+      "iso22000": t('schemes.iso22000'),
+      "iso27001": t('schemes.iso27001'),
+      "iso37001": t('schemes.iso37001'),
+      "iso37001_2025": t('schemes.iso37001_2025'),
+      "iso39001": t('schemes.iso39001'),
+      "iso45001": t('schemes.iso45001'),
+      "other": t('schemes.other')
     }
     
     translatedData.standards = data.standards.map(standard => 
@@ -533,7 +533,7 @@ export function CertificationForm() {
           <CardContent className="pt-6 space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="organizationName">Име на организацията *</Label>
+                <Label htmlFor="organizationName">{t('company.name')} *</Label>
                 <Input
                   id="organizationName"
                   value={formData.organizationName}
@@ -543,7 +543,7 @@ export function CertificationForm() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="eik">ЕИК *</Label>
+                <Label htmlFor="eik">{t('company.eik')} *</Label>
                 <Input
                   id="eik"
                   value={formData.eik}
@@ -556,7 +556,7 @@ export function CertificationForm() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="country">Държава *</Label>
+                <Label htmlFor="country">{t('company.country')} *</Label>
                 <Input
                   id="country"
                   value={formData.country}
@@ -579,7 +579,7 @@ export function CertificationForm() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="contactPersonPosition">Длъжност(лице за контакт) *</Label>
+                <Label htmlFor="contactPersonPosition">{t('company.position')} *</Label>
                 <Input
                   id="contactPersonPosition"
                   value={formData.contactPersonPosition}
@@ -592,7 +592,7 @@ export function CertificationForm() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Имейл *</Label>
+                <Label htmlFor="email">{t('company.email')} *</Label>
                 <Input
                   id="email"
                   type="email"
@@ -603,7 +603,7 @@ export function CertificationForm() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="phone">Телефон *</Label>
+                <Label htmlFor="phone">{t('company.phone')} *</Label>
                 <Input
                   id="phone"
                   value={formData.phone}
