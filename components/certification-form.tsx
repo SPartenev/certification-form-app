@@ -2,6 +2,7 @@
 
 import type React from "react"
 import { useState } from "react"
+import { useLanguage } from "@/contexts/LanguageContext"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -114,6 +115,7 @@ interface FormData {
 }
 
 export function CertificationForm() {
+  const { t } = useLanguage()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState<FormData>({
     applicationTypes: [],
@@ -270,14 +272,14 @@ export function CertificationForm() {
   }
 
   const standardsConfig = [
-    { id: "iso9001", label: "ISO 9001:2015", icon: Building2, color: "bg-orange-500" },
+    { id: "iso9001", label: t('standards.iso9001'), icon: Building2, color: "bg-orange-500" },
     { id: "iso22000", label: "ISO 22000:2018", icon: Utensils, color: "bg-orange-500" },
-    { id: "iso45001", label: "ISO 45001:2018", icon: Shield, color: "bg-orange-500" },
+    { id: "iso45001", label: t('standards.iso45001'), icon: Shield, color: "bg-orange-500" },
     { id: "iso39001", label: "ISO 39001:2012", icon: Car, color: "bg-orange-500" },
-    { id: "iso14001", label: "ISO 14001:2015", icon: Leaf, color: "bg-orange-500" },
+    { id: "iso14001", label: t('standards.iso14001'), icon: Leaf, color: "bg-orange-500" },
     { id: "iso27001", label: "ISO/IEC 27001:2022", icon: Lock, color: "bg-orange-500" },
-    { id: "iso37001", label: "ISO 37001:2016", icon: AlertTriangle, color: "bg-orange-500" },
-    { id: "iso37001_2025", label: "ISO 37001:2025", icon: AlertTriangle, color: "bg-orange-500" },
+    { id: "iso37001", label: t('standards.iso37001'), icon: AlertTriangle, color: "bg-orange-500" },
+    { id: "iso37001_2025", label: t('standards.iso37001_2025'), icon: AlertTriangle, color: "bg-orange-500" },
     { id: "other", label: "Други", icon: Building2, color: "bg-orange-500" },
   ]
 
@@ -481,7 +483,7 @@ export function CertificationForm() {
             </div>
           </div>
           <div className="mt-4">
-            <CardTitle className="text-2xl font-bold text-stone-800">Заявка за сертификация</CardTitle>
+            <CardTitle className="text-2xl font-bold text-stone-800">{t('form.title')}</CardTitle>
             <CardDescription className="text-stone-600 mt-2">
               
             </CardDescription>
@@ -628,7 +630,7 @@ export function CertificationForm() {
 
         <Card className="border-stone-200 bg-white">
           <CardHeader className="bg-orange-50">
-            <CardTitle className="text-stone-800">Стандарти за сертификация:</CardTitle>
+            <CardTitle className="text-stone-800">{t('standards.title')}:</CardTitle>
             <CardDescription>Необходимо е да отбележите поне един стандарт, за да можете да изпратите заявката.</CardDescription>
           </CardHeader>
           <CardContent className="pt-6">
@@ -1583,9 +1585,9 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <AlertTriangle className="h-5 w-5 text-orange-600" />
-                Борба с подкупването
+                {t('antiBribery.title')}
               </CardTitle>
-              <CardDescription>(Акредитация само за територията на България)</CardDescription>
+              <CardDescription>{t('antiBribery.subtitle')}</CardDescription>
             </CardHeader>
             <CardContent className="pt-6 space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1679,9 +1681,9 @@ export function CertificationForm() {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label>Общ брой на персонала в процеси с висок риск от подкупване</Label>
+                    <Label>{t('antiBribery.totalEmployees')}</Label>
                     <p className="text-sm text-gray-600 mb-2">
-                      Общият брой от секцията "Чувствителен процес" по-долу.
+                      {t('antiBribery.totalEmployeesHelp')}
                     </p>
                     <Input
                       value={formData.iso37001.sites[0]?.totalEmployees || ""}
@@ -1697,27 +1699,27 @@ export function CertificationForm() {
 
                   {/* Чувствителни процеси */}
                   <div className="bg-stone-50 p-4 rounded-lg border border-stone-200">
-                    <h4 className="text-lg font-semibold text-stone-700 mb-4">Чувствителен процес</h4>
+                    <h4 className="text-lg font-semibold text-stone-700 mb-4">{t('antiBribery.sensitiveProcess')}</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {[
-                        "Стратегическо управление",
-                        "Продажби/офериране",
-                        "Финансово управление и контрол",
-                        "Управление на човешки ресурси",
-                        "Оперативен контрол и отчетност",
-                        "Работа с пари в брой",
-                        "Управление на дистрибуторски/търговски мрежи",
-                        "Дейност, която е свързана с получаване на облаги и подаръци",
-                        "Провеждане на тръжни процедури и избор на доставчици",
-                        "Поддържане на контакт с институции и контролни органи",
-                        "Управление на доставчици",
-                        "Вътрешен одит",
-                        "Предоставяне на ИТ услуги",
-                        "Спонсорство/финансова подкрепа/безвъзмездна помощ",
-                        "Поддържане на разрешения/лицензи/регистрации",
-                        "Осигуряване на физическа сигурност",
-                        "Издаване на разрешения/лицензи/регистрации",
-                        "Обработване на жалби и оплаквания",
+                        t('processes.strategicManagement'),
+                        t('processes.salesOffering'),
+                        t('processes.financialManagement'),
+                        t('processes.humanResources'),
+                        t('processes.operationalControl'),
+                        t('processes.cashHandling'),
+                        t('processes.distributionManagement'),
+                        t('processes.benefitsGifts'),
+                        t('processes.tendering'),
+                        t('processes.institutionalContact'),
+                        t('processes.supplierManagement'),
+                        t('processes.internalAudit'),
+                        t('processes.itServices'),
+                        t('processes.sponsorship'),
+                        t('processes.licenses'),
+                        t('processes.physicalSecurity'),
+                        t('processes.licenseIssuance'),
+                        t('processes.complaints'),
                       ].map((process, index) => (
                         <div key={index} className="flex items-center gap-2">
                           <Label className="text-sm flex-1">{process}</Label>
@@ -1848,9 +1850,9 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <AlertTriangle className="h-5 w-5 text-orange-600" />
-                Борба с подкупването
+                {t('antiBribery.title')}
               </CardTitle>
-              <CardDescription>(Акредитация само за територията на България)</CardDescription>
+              <CardDescription>{t('antiBribery.subtitle')}</CardDescription>
             </CardHeader>
             <CardContent className="pt-6 space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1944,9 +1946,9 @@ export function CertificationForm() {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label>Общ брой на персонала в процеси с висок риск от подкупване</Label>
+                    <Label>{t('antiBribery.totalEmployees')}</Label>
                     <p className="text-sm text-gray-600 mb-2">
-                      Общият брой от секцията "Чувствителен процес" по-долу.
+                      {t('antiBribery.totalEmployeesHelp')}
                     </p>
                     <Input
                       value={formData.iso37001.sites[0]?.totalEmployees || ""}
@@ -1962,27 +1964,27 @@ export function CertificationForm() {
 
                   {/* Чувствителни процеси */}
                   <div className="bg-stone-50 p-4 rounded-lg border border-stone-200">
-                    <h4 className="text-lg font-semibold text-stone-700 mb-4">Чувствителен процес</h4>
+                    <h4 className="text-lg font-semibold text-stone-700 mb-4">{t('antiBribery.sensitiveProcess')}</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {[
-                        "Стратегическо управление",
-                        "Продажби/офериране",
-                        "Финансово управление и контрол",
-                        "Управление на човешки ресурси",
-                        "Оперативен контрол и отчетност",
-                        "Работа с пари в брой",
-                        "Управление на дистрибуторски/търговски мрежи",
-                        "Дейност, която е свързана с получаване на облаги и подаръци",
-                        "Провеждане на тръжни процедури и избор на доставчици",
-                        "Поддържане на контакт с институции и контролни органи",
-                        "Управление на доставчици",
-                        "Вътрешен одит",
-                        "Предоставяне на ИТ услуги",
-                        "Спонсорство/финансова подкрепа/безвъзмездна помощ",
-                        "Поддържане на разрешения/лицензи/регистрации",
-                        "Осигуряване на физическа сигурност",
-                        "Издаване на разрешения/лицензи/регистрации",
-                        "Обработване на жалби и оплаквания",
+                        t('processes.strategicManagement'),
+                        t('processes.salesOffering'),
+                        t('processes.financialManagement'),
+                        t('processes.humanResources'),
+                        t('processes.operationalControl'),
+                        t('processes.cashHandling'),
+                        t('processes.distributionManagement'),
+                        t('processes.benefitsGifts'),
+                        t('processes.tendering'),
+                        t('processes.institutionalContact'),
+                        t('processes.supplierManagement'),
+                        t('processes.internalAudit'),
+                        t('processes.itServices'),
+                        t('processes.sponsorship'),
+                        t('processes.licenses'),
+                        t('processes.physicalSecurity'),
+                        t('processes.licenseIssuance'),
+                        t('processes.complaints'),
                       ].map((process, index) => (
                         <div key={index} className="flex items-center gap-2">
                           <Label className="text-sm flex-1">{process}</Label>
