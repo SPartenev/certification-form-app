@@ -784,10 +784,10 @@ const translations = {
     
     // ISO 14001 questions
     'iso14001.question1': 'Significant environmental aspects and related processes',
-    'iso14001.question2': 'Is the activity carried out in a residential area, industrial zone, rural area, or protected territory?',
-    'iso14001.question3': 'Applicable regulatory requirements, licenses, and permits for environmental management',
-    'iso14001.question4': 'Are there any "indirect" environmental aspects (e.g., design services)?',
-    'iso14001.question5': 'Are there risks of significant environmental damage resulting from the storage or use of materials?',
+    'iso14001.question2': 'Is the activity carried out in a residential area, industrial zone, rural area, or protected territory? Please provide clarification.',
+    'iso14001.question3': 'Applicable regulatory requirements, licenses, and permits for environmental management. Please specify.',
+    'iso14001.question4': 'Are there any "indirect" environmental aspects (e.g., design services)? Please provide a brief description.',
+    'iso14001.question5': 'Are there risks of significant environmental damage resulting from the storage or use of materials? Please provide a brief description.',
     'iso14001.question6': 'Level of process automation',
     'iso14001.automation.low': 'Low',
     'iso14001.automation.medium': 'Medium',
