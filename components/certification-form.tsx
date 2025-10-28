@@ -288,6 +288,9 @@ export function CertificationForm() {
     t('multiSite.option2'),
     t('multiSite.option3'),
     t('multiSite.option4'),
+    t('multiSite.option5'),
+    t('multiSite.option6'),
+    t('multiSite.option7'),
   ]
 
   // Функция за преобразуване на английски ключове в български текстове
