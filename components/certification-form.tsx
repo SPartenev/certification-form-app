@@ -1689,7 +1689,6 @@ export function CertificationForm() {
                         t('processes.sponsorship'),
                         t('processes.physicalSecurity'),
                         t('processes.complaints'),
-                        t('processes.other2'),
                       ].map((process, index) => (
                         <div key={index} className="flex items-center gap-2">
                           <Label className="text-sm flex-1">{process}</Label>
@@ -1945,7 +1944,6 @@ export function CertificationForm() {
                         t('processes.sponsorship'),
                         t('processes.physicalSecurity'),
                         t('processes.complaints'),
-                        t('processes.other2'),
                       ].map((process, index) => (
                         <div key={index} className="flex items-center gap-2">
                           <Label className="text-sm flex-1">{process}</Label>

@@ -85,7 +85,7 @@ const translations = {
     'processes.itServices': 'Предоставяне на ИТ услуги (вътрешно за организацията и/или за клиенти)',
     'processes.licenses': 'Поддържане на разрешения/лицензи/регистрации',
     'processes.licenseIssuance': 'Издаване на разрешения/лицензи/регистрации',
-    'processes.other1': 'Друго (добавете допълнителни редове, ако е необходимо)',
+    'processes.other1': 'Друго',
     'processes.salesOffering': 'Продажби/офериране',
     'processes.humanResources': 'Управление на човешки ресурси',
     'processes.cashHandling': 'Работа с пари в брой',
@@ -95,7 +95,6 @@ const translations = {
     'processes.sponsorship': 'Спонсорство/финансова подкрепа/безвъзмездна помощ',
     'processes.physicalSecurity': 'Осигуряване на физическа сигурност',
     'processes.complaints': 'Обработване на жалби и оплаквания',
-    'processes.other2': 'Друго (добавете допълнителни редове, ако е необходимо)',
     
     // Other common texts
     'common.submit': 'Изпрати заявката',
@@ -516,7 +515,7 @@ const translations = {
     'processes.itServices': 'Provision of IT services (internal to the organization and/or for clients)',
     'processes.licenses': 'Maintenance of permits/licenses/registrations',
     'processes.licenseIssuance': 'Issuance of permits/licenses/registrations',
-    'processes.other1': 'Other (add additional rows if necessary)',
+    'processes.other1': 'Other',
     'processes.salesOffering': 'Sales/quoting',
     'processes.humanResources': 'Human resources management',
     'processes.cashHandling': 'Cash handling',
@@ -526,7 +525,6 @@ const translations = {
     'processes.sponsorship': 'Sponsorship/financial support/grants',
     'processes.physicalSecurity': 'Ensuring physical security',
     'processes.complaints': 'Processing complaints and grievances',
-    'processes.other2': 'Other (add additional rows if necessary)',
     
     // Other common texts
     'common.submit': 'Submit Application',
