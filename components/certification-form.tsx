@@ -1722,8 +1722,7 @@ export function CertificationForm() {
                 </div>
                 <div className="space-y-2">
                   <Label>
-                    Приблизителен процент от приходите през последната приключена финансова година, които са от публични
-                    източници?
+                    {t('iso37001.publicRevenue')}
                   </Label>
                   <Input
                     value={formData.iso37001.publicRevenue}
