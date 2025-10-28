@@ -180,10 +180,10 @@ const translations = {
     'transfer.title': 'Трансфер на сертификат',
     'transfer.subtitle': 'Трансфер на сертификат',
     'transfer.description': 'Тази информация служи за преценка на възможността за трансфер на сертификацията и за изготвяне на оферта.',
-    'transfer.validCertificate': 'Сертификатът, който се прехвърля, валиден ли е?',
-    'transfer.reasons': 'Причини за трансфер',
-    'transfer.complaints': 'Получавали ли сте оплаквания от клиенти?',
-    'transfer.requirements': 'Регулаторни изисквания, изискващи валиден сертификат',
+    'transfer.validCertificate': 'Сертификатът, който се прехвърля, валиден ли е (включително дали неговата валидност не е прекратена от сертифициращия орган)?',
+    'transfer.reasons': 'Моля посочете причините за трансфера.',
+    'transfer.complaints': 'Получавали ли сте оплаквания от клиенти или други? Ако "да", моля обяснете.',
+    'transfer.requirements': 'Регулаторни изисквания, които ви задължават да притежавате валиден сертификат? Ако "да", моля опишете.',
     'transfer.documents': 'Приложени документи',
     'transfer.documentsInstruction': 'Моля изпратете копия от следните документи на valentina.dobreva@incert.bg и се уверете, че сте ги приложили като отбележете:',
     
@@ -608,10 +608,10 @@ const translations = {
     'transfer.title': 'Transfer of Certification',
     'transfer.subtitle': 'Transfer of Certification',
     'transfer.description': 'This information serves to assess the possibility of certification transfer and to prepare an offer.',
-    'transfer.validCertificate': 'Is the certificate subject to transfer valid?',
-    'transfer.reasons': 'Reasons for the transfer',
-    'transfer.complaints': 'Have you received complaints from clients or others?',
-    'transfer.requirements': 'Regulatory requirements that oblige you to hold a valid certificate',
+    'transfer.validCertificate': 'Is the certificate subject to transfer valid (including whether its validity has not been terminated by the certification body)?',
+    'transfer.reasons': 'Please specify the reasons for the transfer.',
+    'transfer.complaints': 'Have you received complaints from clients or others? If "yes," please explain.',
+    'transfer.requirements': 'Regulatory requirements that oblige you to hold a valid certificate? If "yes," please describe.',
     'transfer.documents': 'Attached documents',
     'transfer.documentsInstruction': 'Please send copies of the following documents to valentina.dobreva@incert.bg and make sure you have attached them by checking:',
     
@@ -655,7 +655,7 @@ const translations = {
     'multiSite.option4': 'A unified management review is conducted for the central management and all sites',
     'multiSite.option5': 'All sites are included in the organization\'s internal audit program',
     'multiSite.option6': 'The central management is responsible for collecting and analyzing data from all sites',
-    'multiSite.option7': 'The central management has the authority and capability to impose the following changes in the processes of individual sites:\n• System and documentation modifications\n• Changes resulting from management reviews\n• Adjustments based on complaints\n• Corrections following corrective actions\n• Improvements based on internal audits and performance evaluations\n• Changes arising from regulatory requirements relevant to applicable standards',
+    'multiSite.option7': 'The central management has the authority and capability to impose the following changes in the processes of individual sites:\nSystem and documentation modifications\nChanges resulting from management reviews\nAdjustments based on complaints\nCorrections following corrective actions\nImprovements based on internal audits and performance evaluations\nChanges arising from regulatory requirements relevant to applicable standards',
     
     // Additional Information
     'additional.title': 'Additional Information',
