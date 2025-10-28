@@ -1463,7 +1463,7 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <Car className="h-5 w-5 text-orange-600" />
-                ISO 39001:2012 {t('iso39001.subtitle')}
+                {t('iso39001.title')}
               </CardTitle>
               <CardDescription>
                 {t('iso39001.description')}
