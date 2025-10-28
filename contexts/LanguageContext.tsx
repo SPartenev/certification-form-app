@@ -655,7 +655,7 @@ const translations = {
     'multiSite.option4': 'A unified management review is conducted for the central management and all sites',
     'multiSite.option5': 'All sites are included in the organization\'s internal audit program',
     'multiSite.option6': 'The central management is responsible for collecting and analyzing data from all sites',
-    'multiSite.option7': 'The central management has the authority and capability to impose the following changes in the processes of individual sites:\nSystem and documentation modifications\nChanges resulting from management reviews\nAdjustments based on complaints\nCorrections following corrective actions\nImprovements based on internal audits and performance evaluations\nChanges arising from regulatory requirements relevant to applicable standards',
+    'multiSite.option7': 'The central management has the authority and capability to impose the following changes in the processes of individual sites:\n• System and documentation modifications\n• Changes resulting from management reviews\n• Adjustments based on complaints\n• Corrections following corrective actions\n• Improvements based on internal audits and performance evaluations\n• Changes arising from regulatory requirements relevant to applicable standards',
     
     // Additional Information
     'additional.title': 'Additional Information',
