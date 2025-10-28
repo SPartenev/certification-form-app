@@ -2063,8 +2063,7 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800">{t('transfer.title')}</CardTitle>
               <CardDescription>
-                Тази информация служи за преценка на възможността за трансфер на сертификацията и за изготвяне на
-                оферта.
+                {t('transfer.description')}
               </CardDescription>
             </CardHeader>
             <CardContent className="pt-6 space-y-6">

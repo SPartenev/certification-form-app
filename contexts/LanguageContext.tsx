@@ -160,6 +160,7 @@ const translations = {
     // Transfer section
     'transfer.title': 'Трансфер на сертификат',
     'transfer.subtitle': 'Трансфер на сертификат',
+    'transfer.description': 'Тази информация служи за преценка на възможността за трансфер на сертификацията и за изготвяне на оферта.',
     'transfer.validCertificate': 'Сертификатът, който се прехвърля, валиден ли е?',
     'transfer.reasons': 'Причини за трансфер',
     'transfer.complaints': 'Получавали ли сте оплаквания от клиенти?',
@@ -564,6 +565,7 @@ const translations = {
     // Transfer section
     'transfer.title': 'Transfer of Certification',
     'transfer.subtitle': 'Transfer of Certification',
+    'transfer.description': 'This information serves to assess the possibility of certification transfer and to prepare an offer.',
     'transfer.validCertificate': 'Is the certificate subject to transfer valid?',
     'transfer.reasons': 'Reasons for the transfer',
     'transfer.complaints': 'Have you received complaints from clients or others?',
