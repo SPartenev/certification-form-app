@@ -377,7 +377,7 @@ const translations = {
     'iso27001.category2': 'Категория 2 — Процеси и задачи',
     'iso27001.category3': 'Категория 3 — Система за управление на информационната сигурност',
     'iso27001.category4': 'Категория 4 — Сложност на IT инфраструктурата',
-    'iso27001.category5': 'Категория 5 — Аутсорсинг към външни изпълнители и доставчици (вкл. облачни услуги)',
+    'iso27001.category5': 'Категория 5. Възлагане на външни изпълнители, доставчици (включително облачни услуги)',
     'iso27001.category6': 'Категория 6 — Ниво на развитие на информационните системи',
     
     // ISO 27001 Category 1 options
@@ -807,7 +807,7 @@ const translations = {
     'iso27001.category2': 'Category 2 — Processes and Tasks',
     'iso27001.category3': 'Category 3 — Information Security Management System (ISMS)',
     'iso27001.category4': 'Category 4 — Complexity of IT Infrastructure',
-    'iso27001.category5': 'Category 5 — Outsourcing to External Contractors, Suppliers (including Cloud Services)',
+    'iso27001.category5': 'Category 5. Outsourcing to External Contractors, Suppliers (including Cloud Services)',
     'iso27001.category6': 'Category 6 — Level of Development of Information Systems',
     
     // ISO 27001 Category 1 options
