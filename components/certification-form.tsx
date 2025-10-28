@@ -1976,7 +1976,7 @@ export function CertificationForm() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>Процент от приходите, които идват от публични средства</Label>
+                  <Label>{t('iso37001.publicRevenue')}</Label>
                   <Input
                     value={formData.iso37001.publicRevenue}
                     onChange={(e) =>
@@ -1994,7 +1994,7 @@ export function CertificationForm() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>
-                    Юридически лица, които са под контрола на организацията (напр. дъщерни дружества, филиали и др.)
+                    {t('iso37001.controlledEntities')}
                   </Label>
                   <Textarea
                     value={formData.iso37001.controlledEntities}
