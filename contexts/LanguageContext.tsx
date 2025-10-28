@@ -430,15 +430,15 @@ const translations = {
     'iso39001.description': 'Отбележете едно или повече от следващите твърдения, които са приложими за Вашата система за управление на безопасността на движението:',
     
     // ISO 39001 statements
-    'iso39001.statement1': 'Служители, които използват транспорт по време на работа',
-    'iso39001.statement2': 'Организацията извършва транспорт на стоки и пътници',
-    'iso39001.statement3': 'Дейности, които генерират трафик',
-    'iso39001.statement4': 'Услуги и продукти за системата на пътната безопасност',
+    'iso39001.statement1': 'Служителите използват автомобилен транспорт до и от работа, или по време на работа (публичен транспорт или частни превозни средства в качеството на пътници или водачи, и като пешеходци или велосипедисти)',
+    'iso39001.statement2': 'Организацията извършва транспорт на стоки и пътници, включително и чрез подизпълнители',
+    'iso39001.statement3': 'Организацията извършва дейности, които генерират трафик към и от места, контролирани или повлияни от организацията (напр. супермаркети, училища или др. места с много посетители)',
+    'iso39001.statement4': 'Организацията предоставя услуги и продукти за системата за движение по пътищата (напр. транспортни услуги, управление, планиране, проектиране, изграждане и поддържане на инфраструктура, превозни средства и свързани продукти, спешна медицинска помощ, грижи при травми, рехабилитация, дейности по контрол и законодателни дейности)',
     
     // ISO 39001 additional fields
-    'iso39001.requirements': 'Регулаторни изисквания и лицензи',
-    'iso39001.nonApplicable': 'Определени като неприложими изисквания на ISO 39001',
-    'iso39001.accidents': 'Пътнотранспортни произшествия през последните 12 месеца',
+    'iso39001.requirements': 'Нормативни изисквания и лицензи/разрешителни за управлението на безопасността на движението по пътищата. Моля посочете.',
+    'iso39001.nonApplicable': 'Моля посочете кои изисквания на ISO 39001 са определени като неприложими.',
+    'iso39001.accidents': 'През последните 12 месеца възникнали ли са ПТП с участието на служители или в района, контролиран от организацията? Ако "да", пояснете.',
     
     // Transfer section (duplicate removed)
     
@@ -848,8 +848,8 @@ const translations = {
     'iso22000.subtitle': 'Food Safety',
     
     // ISO 22000 questions
-    'iso22000.haccpPlans': 'Number of HACCP plans with their respective names',
-    'iso22000.description': 'Description of products and processes, product lines, personnel, etc.',
+    'iso22000.haccpPlans': 'Number of HACCP plans with their respective names for each site within the certification scope, including the hazards in each HACCP plan',
+    'iso22000.description': 'Description of products and processes, product lines, personnel, types and diversity of tasks affecting food safety management, product development, in-house laboratory testing, etc.',
     'iso22000.automation': 'Information on the level of automation, use of closed production systems, mechanization, and manual labor',
     
     // ISO 39001 section
@@ -858,15 +858,15 @@ const translations = {
     'iso39001.description': 'Please mark one or more of the following statements that are applicable to your road traffic safety management system:',
     
     // ISO 39001 statements
-    'iso39001.statement1': 'Employees use road transport to and from work or during work',
-    'iso39001.statement2': 'The organization conducts transportation of goods and passengers',
-    'iso39001.statement3': 'The organization conducts activities that generate traffic',
-    'iso39001.statement4': 'The organization provides services and products for the road traffic system',
+    'iso39001.statement1': 'Employees use road transport to and from work, or during work (public transport or private vehicles as passengers or drivers, and as pedestrians or cyclists)',
+    'iso39001.statement2': 'The organization conducts transportation of goods and passengers, including through subcontractors',
+    'iso39001.statement3': 'The organization conducts activities that generate traffic to and from locations controlled or influenced by the organization (e.g., supermarkets, schools, or other places with many visitors)',
+    'iso39001.statement4': 'The organization provides services and products for the road traffic system (e.g., transportation services, management, planning, design, construction and maintenance of infrastructure, vehicles and related products, emergency medical services, trauma care, rehabilitation, control activities, and legislative activities)',
     
     // ISO 39001 additional fields
-    'iso39001.requirements': 'Regulatory requirements and licenses/permits',
-    'iso39001.nonApplicable': 'Requirements of ISO 39001 determined as not applicable',
-    'iso39001.accidents': 'Road traffic accidents in the last 12 months',
+    'iso39001.requirements': 'Regulatory requirements and licenses/permits for road traffic safety management. Please specify.',
+    'iso39001.nonApplicable': 'Please specify which requirements of ISO 39001 have been determined as not applicable.',
+    'iso39001.accidents': 'Have there been any road traffic accidents involving employees or in the area controlled by the organization in the last 12 months? If "yes," please provide details.',
     
     // Transfer section (duplicate removed)
     
