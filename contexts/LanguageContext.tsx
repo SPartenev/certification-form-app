@@ -154,8 +154,8 @@ const translations = {
     
     
     // ISO 37001 section
-    'iso37001.title': 'Антикорупционно управление: ISO 37001:2016',
-    'iso37001.title2025': 'Антикорупционно управление: ISO 37001:2025',
+    'iso37001.title': 'Антикорупционно управление',
+    'iso37001.title2025': 'Антикорупционно управление',
     'iso37001.subtitle': 'Антикорупционно управление',
     
     // ISO 37001 additional fields
@@ -305,11 +305,14 @@ const translations = {
     
     // Multi-site Management
     'multiSite.title': 'Управление на множество площадки',
-    'multiSite.description': 'Отбележете кои от следващите твърдения са приложими за Вашата система за управление',
-    'multiSite.option1': 'Централното ръководство има пълен контрол върху всички площадки',
-    'multiSite.option2': 'Всички площадки използват една и съща система за управление',
-    'multiSite.option3': 'Всички площадки са сертифицирани по същия стандарт',
-    'multiSite.option4': 'Всички площадки са под една и съща правна структура',
+    'multiSite.description': 'Ако сте посочили повече от една площадка, моля отбележете кои от следващите твърдения са приложими за Вашата система за управление',
+    'multiSite.option1': 'Организацията има една обща система за управление за всички площадки',
+    'multiSite.option2': 'Организацията има единно централно управление, което е част от нея и не е възложено на външен изпълнител',
+    'multiSite.option3': 'Централното управление има правомощия да разработва, внедрява и поддържа единната система за управление за всички площадки в обхвата на сертификация',
+    'multiSite.option4': 'Провежда се общ преглед от ръководството за централното управление и площадките',
+    'multiSite.option5': 'Всички площадки са включени в програмата за вътрешни одити на организацията',
+    'multiSite.option6': 'Централното управление носи отговорност за събирането и анализа на данни от всички площадки',
+    'multiSite.option7': 'Централното управление има право и възможност да налага следните промени в процесите на отделните площадки (в системата и документацията ѝ, в резултат от проведени прегледи от ръководството, в резултат от оплаквания, в резултат от коригиращи действия, в резултат на вътрешни одити и оценяване на резултатите и промени, произтичащи от нормативни изисквания, относими към приложимите стандарти)',
     
     // Additional Information
     'additional.title': 'Допълнителна информация',
@@ -335,7 +338,7 @@ const translations = {
     'placeholder.categoryCount': 'Брой в категорията и коментар',
     
     // ISO 45001 section
-    'iso45001.title': 'Здраве и безопасност при работа: ISO 45001:2018',
+    'iso45001.title': 'Здраве и безопасност при работа',
     'iso45001.subtitle': 'Здраве и безопасност при работа',
     
     // ISO 45001 questions
@@ -348,7 +351,7 @@ const translations = {
     'iso45001.question7': 'Има ли съдебни дела срещу вас за нарушения по трудовото законодателство?',
     
     // ISO 14001 section
-    'iso14001.title': 'Околна среда: ISO 14001:2015',
+    'iso14001.title': 'Околна среда',
     'iso14001.subtitle': 'Околна среда',
     
     // ISO 14001 questions
@@ -363,7 +366,7 @@ const translations = {
     'iso14001.automation.high': 'Високо',
     
     // ISO 27001 section
-    'iso27001.title': 'Информационна сигурност: ISO/IEC 27001:2022',
+    'iso27001.title': 'Информационна сигурност',
     'iso27001.subtitle': 'Информационна сигурност',
     'iso27001.description': 'За всяка от категориите моля отбележете само едно твърдение, което най-точно описва ситуацията във Вашата организация.',
     
@@ -413,7 +416,7 @@ const translations = {
     'iso27001.access.full': 'Лица с наложени ограничения за предотвратяване на разкриването на информация (напр. забрана за внасяне на лични вещи в работната зона).',
     
     // ISO 22000 section
-    'iso22000.title': 'Безопасност на храните: ISO 22000:2018',
+    'iso22000.title': 'Безопасност на храните',
     'iso22000.subtitle': 'Безопасност на храните',
     
     // ISO 22000 questions
@@ -422,7 +425,7 @@ const translations = {
     'iso22000.automation': 'Ниво на автоматизация, механизация и ръчен труд',
     
     // ISO 39001 section
-    'iso39001.title': 'Безопасност на пътното движение: ISO 39001:2012',
+    'iso39001.title': 'Безопасност на пътното движение',
     'iso39001.subtitle': 'Безопасност на пътното движение',
     'iso39001.description': 'Отбележете едно или повече от следващите твърдения, които са приложими за Вашата система за управление на безопасността на движението:',
     
@@ -579,8 +582,8 @@ const translations = {
     
     
     // ISO 37001 section
-    'iso37001.title': 'Anti-Bribery Management: ISO 37001:2016',
-    'iso37001.title2025': 'Anti-Bribery Management: ISO 37001:2025',
+    'iso37001.title': 'Anti-Bribery Management',
+    'iso37001.title2025': 'Anti-Bribery Management',
     'iso37001.subtitle': 'Anti-Bribery Management',
     
     // ISO 37001 additional fields
@@ -652,7 +655,7 @@ const translations = {
     'multiSite.option4': 'A unified management review is conducted for the central management and all sites',
     'multiSite.option5': 'All sites are included in the organization\'s internal audit program',
     'multiSite.option6': 'The central management is responsible for collecting and analyzing data from all sites',
-    'multiSite.option7': 'The central management has the authority and capability to impose the following changes in the processes of individual sites: • System and documentation modifications • Changes resulting from management reviews • Adjustments based on complaints • Corrections following corrective actions • Improvements based on internal audits and performance evaluations • Changes arising from regulatory requirements relevant to applicable standards',
+    'multiSite.option7': 'The central management has the authority and capability to impose the following changes in the processes of individual sites:\n• System and documentation modifications\n• Changes resulting from management reviews\n• Adjustments based on complaints\n• Corrections following corrective actions\n• Improvements based on internal audits and performance evaluations\n• Changes arising from regulatory requirements relevant to applicable standards',
     
     // Additional Information
     'additional.title': 'Additional Information',
@@ -763,7 +766,7 @@ const translations = {
     'placeholder.categoryCount': 'Count in category and comment',
     
     // ISO 45001 section
-    'iso45001.title': 'Occupational Health and Safety: ISO 45001:2018',
+    'iso45001.title': 'Occupational Health and Safety',
     'iso45001.subtitle': 'Occupational Health and Safety',
     
     // ISO 45001 questions
@@ -776,7 +779,7 @@ const translations = {
     'iso45001.question7': 'Are there any legal proceedings against you for violations of labor legislation and/or OHS?',
     
     // ISO 14001 section
-    'iso14001.title': 'Environmental Management: ISO 14001:2015',
+    'iso14001.title': 'Environmental Management',
     'iso14001.subtitle': 'Environmental Management',
     
     // ISO 14001 questions
@@ -791,7 +794,7 @@ const translations = {
     'iso14001.automation.high': 'High',
     
     // ISO 27001 section
-    'iso27001.title': 'Information Security: ISO/IEC 27001:2022',
+    'iso27001.title': 'Information Security',
     'iso27001.subtitle': 'Information Security',
     'iso27001.description': 'For each category, please mark only one statement that best describes the situation in your organization.',
     
@@ -841,7 +844,7 @@ const translations = {
     'iso27001.access.full': 'Full access with strict restrictions: Individuals with imposed limitations to prevent the disclosure of information (e.g., prohibition on bringing personal items into the work area).',
     
     // ISO 22000 section
-    'iso22000.title': 'Food Safety: ISO 22000:2018',
+    'iso22000.title': 'Food Safety',
     'iso22000.subtitle': 'Food Safety',
     
     // ISO 22000 questions
@@ -850,7 +853,7 @@ const translations = {
     'iso22000.automation': 'Information on the level of automation, use of closed production systems, mechanization, and manual labor',
     
     // ISO 39001 section
-    'iso39001.title': 'Road Traffic Safety: ISO 39001:2012',
+    'iso39001.title': 'Road Traffic Safety',
     'iso39001.subtitle': 'Road Traffic Safety',
     'iso39001.description': 'Please mark one or more of the following statements that are applicable to your road traffic safety management system:',
     
