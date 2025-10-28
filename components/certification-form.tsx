@@ -1811,9 +1811,9 @@ export function CertificationForm() {
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800 flex items-center gap-2">
                 <AlertTriangle className="h-5 w-5 text-orange-600" />
-                {t('iso37001.title')}
+                {t('iso37001.title2025')}
               </CardTitle>
-              <CardDescription>{t('antiBribery.subtitle')}</CardDescription>
+              <CardDescription>{t('iso37001.subtitle')}</CardDescription>
             </CardHeader>
             <CardContent className="pt-6 space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

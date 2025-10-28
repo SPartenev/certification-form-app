@@ -136,7 +136,8 @@ const translations = {
     
     
     // ISO 37001 section
-    'iso37001.title': 'ISO 37001:2016 Антикорупционно управление',
+    'iso37001.title': 'Антикорупционно управление: ISO 37001:2016',
+    'iso37001.title2025': 'Антикорупционно управление: ISO 37001:2025',
     'iso37001.subtitle': 'Антикорупционно управление',
     
     // ISO 37001 additional fields
@@ -316,7 +317,7 @@ const translations = {
     'placeholder.categoryCount': 'Брой в категорията и коментар',
     
     // ISO 45001 section
-    'iso45001.title': 'ISO 45001:2018 Здраве и безопасност при работа',
+    'iso45001.title': 'Здраве и безопасност при работа: ISO 45001:2018',
     'iso45001.subtitle': 'Здраве и безопасност при работа',
     
     // ISO 45001 questions
@@ -329,7 +330,7 @@ const translations = {
     'iso45001.question7': 'Има ли съдебни дела срещу вас за нарушения по трудовото законодателство?',
     
     // ISO 14001 section
-    'iso14001.title': 'ISO 14001:2015 Околна среда',
+    'iso14001.title': 'Околна среда: ISO 14001:2015',
     'iso14001.subtitle': 'Околна среда',
     
     // ISO 14001 questions
@@ -344,7 +345,7 @@ const translations = {
     'iso14001.automation.high': 'Високо',
     
     // ISO 27001 section
-    'iso27001.title': 'ISO/IEC 27001:2022 Информационна сигурност',
+    'iso27001.title': 'Информационна сигурност: ISO/IEC 27001:2022',
     'iso27001.subtitle': 'Информационна сигурност',
     'iso27001.description': 'За всяка от категориите моля отбележете само едно твърдение, което най-точно описва ситуацията във Вашата организация.',
     
@@ -394,7 +395,7 @@ const translations = {
     'iso27001.access.full': 'Лица с наложени ограничения за предотвратяване на разкриването на информация (напр. забрана за внасяне на лични вещи в работната зона).',
     
     // ISO 22000 section
-    'iso22000.title': 'ISO 22000:2018 Безопасност на храните',
+    'iso22000.title': 'Безопасност на храните: ISO 22000:2018',
     'iso22000.subtitle': 'Безопасност на храните',
     
     // ISO 22000 questions
@@ -403,7 +404,7 @@ const translations = {
     'iso22000.automation': 'Ниво на автоматизация, механизация и ръчен труд',
     
     // ISO 39001 section
-    'iso39001.title': 'ISO 39001:2012 Безопасност на пътното движение',
+    'iso39001.title': 'Безопасност на пътното движение: ISO 39001:2012',
     'iso39001.subtitle': 'Безопасност на пътното движение',
     'iso39001.description': 'Отбележете едно или повече от следващите твърдения, които са приложими за Вашата система за управление на безопасността на движението:',
     
@@ -542,7 +543,8 @@ const translations = {
     
     
     // ISO 37001 section
-    'iso37001.title': 'ISO 37001:2016 Anti-Bribery Management',
+    'iso37001.title': 'Anti-Bribery Management: ISO 37001:2016',
+    'iso37001.title2025': 'Anti-Bribery Management: ISO 37001:2025',
     'iso37001.subtitle': 'Anti-Bribery Management',
     
     // ISO 37001 additional fields
@@ -722,7 +724,7 @@ const translations = {
     'placeholder.categoryCount': 'Count in category and comment',
     
     // ISO 45001 section
-    'iso45001.title': 'ISO 45001:2018 Occupational Health and Safety',
+    'iso45001.title': 'Occupational Health and Safety: ISO 45001:2018',
     'iso45001.subtitle': 'Occupational Health and Safety',
     
     // ISO 45001 questions
@@ -735,7 +737,7 @@ const translations = {
     'iso45001.question7': 'Are there any legal proceedings against you for violations of labor legislation and/or OHS?',
     
     // ISO 14001 section
-    'iso14001.title': 'ISO 14001:2015 Environmental Management',
+    'iso14001.title': 'Environmental Management: ISO 14001:2015',
     'iso14001.subtitle': 'Environmental Management',
     
     // ISO 14001 questions
@@ -750,7 +752,7 @@ const translations = {
     'iso14001.automation.high': 'High',
     
     // ISO 27001 section
-    'iso27001.title': 'ISO/IEC 27001:2022 Information Security',
+    'iso27001.title': 'Information Security: ISO/IEC 27001:2022',
     'iso27001.subtitle': 'Information Security',
     'iso27001.description': 'For each category, please mark only one statement that best describes the situation in your organization.',
     
@@ -800,7 +802,7 @@ const translations = {
     'iso27001.access.full': 'Full access with strict restrictions: Individuals with imposed limitations to prevent the disclosure of information (e.g., prohibition on bringing personal items into the work area).',
     
     // ISO 22000 section
-    'iso22000.title': 'ISO 22000:2018 Food Safety',
+    'iso22000.title': 'Food Safety: ISO 22000:2018',
     'iso22000.subtitle': 'Food Safety',
     
     // ISO 22000 questions
@@ -809,7 +811,7 @@ const translations = {
     'iso22000.automation': 'Information on the level of automation, use of closed production systems, mechanization, and manual labor',
     
     // ISO 39001 section
-    'iso39001.title': 'ISO 39001:2012 Road Traffic Safety',
+    'iso39001.title': 'Road Traffic Safety: ISO 39001:2012',
     'iso39001.subtitle': 'Road Traffic Safety',
     'iso39001.description': 'Please mark one or more of the following statements that are applicable to your road traffic safety management system:',
     
