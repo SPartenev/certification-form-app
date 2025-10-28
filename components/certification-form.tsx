@@ -794,7 +794,12 @@ export function CertificationForm() {
                           onCheckedChange={(checked) => handleMultiSiteChange(option, checked as boolean)}
                         />
                         <Label htmlFor={`multisite-${index}`} className="text-sm leading-relaxed cursor-pointer">
-                          {option}
+                          {option.split('\n').map((line, lineIndex) => (
+                            <span key={lineIndex}>
+                              {line}
+                              {lineIndex < option.split('\n').length - 1 && <br />}
+                            </span>
+                          ))}
                         </Label>
                       </div>
                     ))}
