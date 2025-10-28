@@ -156,7 +156,7 @@ const translations = {
     // ISO 37001 section
     'iso37001.title': 'Антикорупционно управление',
     'iso37001.title2025': 'Антикорупционно управление',
-    'iso37001.subtitle': 'Антикорупционно управление',
+    'iso37001.subtitle': 'Антикорупционно управление (Сертификация ограничена само за България)',
     
     // ISO 37001 additional fields
     'iso37001.processesOutOfScope': 'Процеси и/или дейности извън обхвата на сертификацията',
@@ -584,7 +584,7 @@ const translations = {
     // ISO 37001 section
     'iso37001.title': 'Anti-Bribery Management',
     'iso37001.title2025': 'Anti-Bribery Management',
-    'iso37001.subtitle': 'Anti-Bribery Management',
+    'iso37001.subtitle': 'Anti-Bribery Management (Accredited Certification limited to Bulgaria only)',
     
     // ISO 37001 additional fields
     'iso37001.processesOutOfScope': 'Processes and/or activities outside the scope of certification',
