@@ -495,7 +495,7 @@ const translations = {
     'common.other': 'Other',
     
     // Company information
-    'company.eik': 'EIK',
+    'company.eik': 'Company Reg. No',
     'company.country': 'Country',
     'company.contactPerson': 'Contact Person',
     'company.contactPersonName': 'First and Last Name (Contact Person)',
