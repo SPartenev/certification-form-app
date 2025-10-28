@@ -29,6 +29,20 @@ const translations = {
     'form.submitButton': 'Изпрати заявката',
     'form.submitting': 'Изпраща се...',
     
+    // Success modal
+    'modal.success.title': '✔️ Благодарим!',
+    'modal.success.message': 'Вашата заявка е успешно изпратена.',
+    'modal.success.applicationNumber': 'Номер на заявката:',
+    'modal.success.footer': 'Ще се свържем с Вас скоро!',
+    'modal.success.closeButton': 'Затвори',
+    
+    // Error messages
+    'modal.error.title': '⚠️ Възникна проблем',
+    'modal.error.submission': 'Възникна проблем при изпращането на заявката.',
+    'modal.error.network': 'Няма връзка със сървъра.',
+    'modal.error.retry': 'Моля опитайте отново или се свържете с нас.',
+    'modal.error.checkConnection': 'Моля, проверете интернет връзката си и опитайте отново.',
+    
     // Company information
     'company.name': 'Име на организацията',
     'company.address': 'Адрес на организацията',
@@ -435,6 +449,20 @@ const translations = {
     'form.subtitle': 'Please fill in all fields to continue',
     'form.submitButton': 'Submit Application',
     'form.submitting': 'Submitting...',
+    
+    // Success modal
+    'modal.success.title': '✔️ Thank you!',
+    'modal.success.message': 'Your application has been successfully submitted.',
+    'modal.success.applicationNumber': 'Application Number:',
+    'modal.success.footer': 'We will contact you shortly!',
+    'modal.success.closeButton': 'Close',
+    
+    // Error messages
+    'modal.error.title': '⚠️ Problem occurred',
+    'modal.error.submission': 'There was a problem submitting your application.',
+    'modal.error.network': 'No connection to server.',
+    'modal.error.retry': 'Please try again or contact us.',
+    'modal.error.checkConnection': 'Please check your internet connection and try again.',
     
     // Company information
     'company.name': 'Organization Name',

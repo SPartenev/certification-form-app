@@ -449,15 +449,15 @@ export function CertificationForm() {
       
       if (response.ok && result.success) {
         console.log("Данните са изпратени успешно:", result)
-        alert(`✅ Благодарим! Вашата заявка е успешно изпратена.\n\nНомер на заявката: ${result.id}\n\nЩе се свържем с вас скоро!`)
+        alert(`${t('modal.success.title')}\n\n${t('modal.success.message')}\n\n${t('modal.success.applicationNumber')} ${result.id}\n\n${t('modal.success.footer')}`)
         window.location.reload()
       } else {
         console.error("Грешка при изпращане:", result.message)
-        alert(`⚠️ Възникна проблем при изпращането на заявката.\n\nГрешка: ${result.message || response.status}\nМоля опитайте отново или се свържете с нас.`)
+        alert(`${t('modal.error.title')}\n\n${t('modal.error.submission')}\n\nГрешка: ${result.message || response.status}\n${t('modal.error.retry')}`)
       }
     } catch (error) {
       console.error("Мрежова грешка:", error)
-      alert(`⚠️ Няма връзка със сървъра.\n\nМоля, проверете интернет връзката си и опитайте отново.`)
+      alert(`${t('modal.error.title')}\n\n${t('modal.error.network')}\n\n${t('modal.error.checkConnection')}`)
     } finally {
       setIsSubmitting(false)
     }
