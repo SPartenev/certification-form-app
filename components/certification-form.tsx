@@ -2058,7 +2058,7 @@ export function CertificationForm() {
           </Card>
         )}
 
-        {formData.applicationTypes.includes("transfer") && (
+        {formData.applicationTypes.includes(t('application.transfer')) && (
           <Card className="border-stone-200 bg-white">
             <CardHeader className="bg-orange-50">
               <CardTitle className="text-stone-800">{t('transfer.title')}</CardTitle>
