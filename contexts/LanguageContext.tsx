@@ -43,6 +43,10 @@ const translations = {
     'modal.error.retry': 'Моля опитайте отново или се свържете с нас.',
     'modal.error.checkConnection': 'Моля, проверете интернет връзката си и опитайте отново.',
     
+    // Validation messages
+    'validation.selectApplicationType': 'Моля, изберете поне един вид на заявката!',
+    'validation.auditLanguage': 'Моля, попълнете езика на одита!',
+    
     // Company information
     'company.name': 'Име на организацията',
     'company.address': 'Адрес на организацията',
@@ -463,6 +467,10 @@ const translations = {
     'modal.error.network': 'No connection to server.',
     'modal.error.retry': 'Please try again or contact us.',
     'modal.error.checkConnection': 'Please check your internet connection and try again.',
+    
+    // Validation messages
+    'validation.selectApplicationType': 'Please select at least one application type!',
+    'validation.auditLanguage': 'Please fill in the audit language!',
     
     // Company information
     'company.name': 'Organization Name',

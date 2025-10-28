@@ -410,12 +410,12 @@ export function CertificationForm() {
     
     // Валидация за задължителни полета
     if (formData.applicationTypes.length === 0) {
-      alert('Моля, изберете поне един вид на заявката!')
+      alert(t('validation.selectApplicationType'))
       return
     }
     
     if (!formData.auditLanguage.trim()) {
-      alert('Моля, попълнете езика на одита!')
+      alert(t('validation.auditLanguage'))
       return
     }
     
