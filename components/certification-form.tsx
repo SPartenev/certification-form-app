@@ -2129,7 +2129,7 @@ export function CertificationForm() {
 
               <div className="space-y-4">
                 <Label className="font-semibold text-base">
-                  Моля изпратете копия от следните документи на valentina.dobreva@incert.bg и се уверете, че сте ги приложили като отбележете:
+                  {t('transfer.documentsInstruction')}
                 </Label>
                 <div className="space-y-3">
                   {[

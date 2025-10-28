@@ -166,6 +166,7 @@ const translations = {
     'transfer.complaints': 'Получавали ли сте оплаквания от клиенти?',
     'transfer.requirements': 'Регулаторни изисквания, изискващи валиден сертификат',
     'transfer.documents': 'Приложени документи',
+    'transfer.documentsInstruction': 'Моля изпратете копия от следните документи на valentina.dobreva@incert.bg и се уверете, че сте ги приложили като отбележете:',
     
     // Integrated systems
     'integrated.title': 'Интегрирани системи',
@@ -571,6 +572,7 @@ const translations = {
     'transfer.complaints': 'Have you received complaints from clients or others?',
     'transfer.requirements': 'Regulatory requirements that oblige you to hold a valid certificate',
     'transfer.documents': 'Attached documents',
+    'transfer.documentsInstruction': 'Please send copies of the following documents to valentina.dobreva@incert.bg and make sure you have attached them by checking:',
     
     // Integrated systems
     'integrated.title': 'Integrated Systems',
