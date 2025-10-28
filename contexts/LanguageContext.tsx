@@ -771,12 +771,12 @@ const translations = {
     
     // ISO 45001 questions
     'iso45001.question1': 'Key occupational health and safety hazards and risks related to the activity',
-    'iso45001.question2': 'Do you use hazardous chemical substances and mixtures in your activities?',
-    'iso45001.question3': 'Do you use installations and/or high-risk equipment (HPE) as defined by national legislation?',
-    'iso45001.question4': 'Applicable regulatory requirements related to occupational health and safety (OHS)',
-    'iso45001.question5': 'Personnel working off-site (e.g., drivers, installers, etc.) or at temporary sites',
-    'iso45001.question6': 'Have any occupational accidents been recorded in the past two years?',
-    'iso45001.question7': 'Are there any legal proceedings against you for violations of labor legislation and/or OHS?',
+    'iso45001.question2': 'Do you use hazardous chemical substances and mixtures in your activities? If "yes," please specify which ones.',
+    'iso45001.question3': 'Do you use installations and/or high-risk equipment (HPE) as defined by national legislation? If "yes," please provide details.',
+    'iso45001.question4': 'Applicable regulatory requirements related to occupational health and safety (OHS). Please specify.',
+    'iso45001.question5': 'Personnel working off-site (e.g., drivers, installers, etc.) or at temporary sites? Please clarify and specify the approximate number.',
+    'iso45001.question6': 'Have any occupational accidents been recorded in the past two years? If "yes," please provide details.',
+    'iso45001.question7': 'Are there any legal proceedings against you for violations of labor legislation and/or occupational health and safety (OHS)? If "yes," please provide details.',
     
     // ISO 14001 section
     'iso14001.title': 'Environmental Management',
