@@ -92,7 +92,7 @@ const translations = {
     'processes.benefitsGifts': 'Дейност, свързана с получаване на облаги и подаръци',
     'processes.institutionalContact': 'Поддържане на контакт с институции и регулаторни органи',
     'processes.internalAudit': 'Вътрешен одит',
-    'processes.sponsorship': 'Спонсорство/финансова подкрепа/грантове',
+    'processes.sponsorship': 'Спонсорство/финансова подкрепа/безвъзмездна помощ',
     'processes.physicalSecurity': 'Осигуряване на физическа сигурност',
     'processes.complaints': 'Обработване на жалби и оплаквания',
     'processes.other2': 'Друго (добавете допълнителни редове при необходимост)',
