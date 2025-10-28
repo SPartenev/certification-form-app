@@ -638,7 +638,7 @@ const translations = {
     'scope.siteAddress': 'Site Address',
     'scope.siteType': 'Site Type',
     'scope.main': 'Permanent',
-    'scope.temporary': 'Temporary',
+    'scope.temporary': 'Additional',
     'scope.processes': 'Processes, Activities, Working Hours, Shifts',
     'scope.employees': 'Number of Employees',
     'scope.addSite': 'Add Site',
