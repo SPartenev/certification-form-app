@@ -193,13 +193,13 @@ const translations = {
     'integrated.description': 'Моля отбележете само тези, които са приложими за внедрената интегрирана система за управление:',
     
     // Integrated systems statements
-    'integrated.statement1': 'Разработена е обща документация на интегрираната система',
-    'integrated.statement2': 'Общата бизнес стратегия и планове се преглеждат на ръководния преглед',
-    'integrated.statement3': 'Използва се интегриран подход при вътрешни одити',
-    'integrated.statement4': 'Политиката и целите са разработени интегрирано',
-    'integrated.statement5': 'Интегриран подход при управление на процесите',
-    'integrated.statement6': 'Интегриран подход при подобренията',
-    'integrated.statement7': 'Отговорностите в системата са интегрирани',
+    'integrated.statement1': 'Разработена е обща документация на интегрираната система за управление, включително подробни работни инструкции',
+    'integrated.statement2': 'На прегледите от ръководството се разглеждат общата бизнес стратегия и планове за развитие',
+    'integrated.statement3': 'При вътрешните одити се използва "интегриран подход"',
+    'integrated.statement4': 'Политиката и целите са разработени интегрирано т.е. общи са за интегрираната система',
+    'integrated.statement5': 'В управлението на процесите се използва "интегриран подход"',
+    'integrated.statement6': 'При прилагането на мерки за подобрение се използва "интегриран подход" (напр. изпълнение на коригиращи действия, измерване, непрекъснато подобряване)',
+    'integrated.statement7': 'Отговорностите в системата за управление са определени "интегрирано"',
     
     // Form completion
     'form.completedBy': 'Формулярът е попълнен от',
@@ -621,12 +621,12 @@ const translations = {
     'integrated.description': 'Please mark only those that are applicable to the implemented integrated management system:',
     
     // Integrated systems statements
-    'integrated.statement1': 'A general documentation of the integrated management system has been developed',
+    'integrated.statement1': 'A general documentation of the integrated management system has been developed, including detailed work instructions',
     'integrated.statement2': 'The general business strategy and development plans are reviewed during management reviews',
     'integrated.statement3': 'An "integrated approach" is used during internal audits',
-    'integrated.statement4': 'The policy and objectives are developed in an integrated manner',
+    'integrated.statement4': 'The policy and objectives are developed in an integrated manner, meaning they are common for the integrated system',
     'integrated.statement5': 'An "integrated approach" is used in process management',
-    'integrated.statement6': 'An "integrated approach" is applied when implementing improvement measures',
+    'integrated.statement6': 'An "integrated approach" is applied when implementing improvement measures (e.g., corrective actions, measurement, continuous improvement)',
     'integrated.statement7': 'Responsibilities in the management system are defined "integrated"',
     
     // Form completion
