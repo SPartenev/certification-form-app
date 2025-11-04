@@ -742,7 +742,7 @@ export function CertificationForm() {
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="main">{t('scope.main')}</SelectItem>
-                            <SelectItem value="temporary">{t('scope.temporary')}</SelectItem>
+                            <SelectItem value="additional">{t('scope.temporary')}</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
