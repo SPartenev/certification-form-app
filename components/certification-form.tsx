@@ -467,7 +467,17 @@ export function CertificationForm() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 bg-stone-50 min-h-screen p-6">
+    <div 
+      className="max-w-4xl mx-auto space-y-8 bg-stone-50 min-h-screen p-6"
+      style={{
+        maxWidth: '56rem',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        backgroundColor: '#fafaf9',
+        minHeight: '100vh',
+        padding: '1.5rem',
+      }}
+    >
       <Card className="border-stone-200 shadow-lg">
         <CardHeader className="bg-white border-b border-stone-200">
           <div className="flex items-center justify-between">
@@ -488,7 +498,15 @@ export function CertificationForm() {
         </CardHeader>
       </Card>
 
-      <form onSubmit={handleSubmit} className="space-y-8">
+      <form 
+        onSubmit={handleSubmit} 
+        className="space-y-8"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '2rem',
+        }}
+      >
         <Card className="border-stone-200 bg-white">
           <CardHeader className="bg-orange-50">
             <CardTitle className="text-stone-800">{t('section.applicationType')}</CardTitle>
@@ -2250,15 +2268,56 @@ export function CertificationForm() {
               disabled={isSubmitting}
               className="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
               size="lg"
+              style={{
+                width: '100%',
+                backgroundColor: '#ea580c',
+                color: '#ffffff',
+                paddingTop: '0.75rem',
+                paddingBottom: '0.75rem',
+                paddingLeft: '1.5rem',
+                paddingRight: '1.5rem',
+                fontSize: '1.125rem',
+                fontWeight: 600,
+                borderRadius: '0.375rem',
+                border: 'none',
+                cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                opacity: isSubmitting ? 0.5 : 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.5rem',
+                transition: 'background-color 0.2s, opacity 0.2s',
+                minHeight: '52px',
+              }}
+              onMouseEnter={(e) => {
+                if (!isSubmitting) {
+                  e.currentTarget.style.backgroundColor = '#c2410c';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isSubmitting) {
+                  e.currentTarget.style.backgroundColor = '#ea580c';
+                }
+              }}
             >
               {isSubmitting ? (
                 <>
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                  <div 
+                    className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"
+                    style={{
+                      width: '1.25rem',
+                      height: '1.25rem',
+                      border: '2px solid transparent',
+                      borderBottomColor: '#ffffff',
+                      borderRadius: '50%',
+                      animation: 'spin 1s linear infinite',
+                    }}
+                  ></div>
                   {t('form.submitting')}
                 </>
               ) : (
                 <>
-                  <Send className="h-5 w-5 mr-2" />
+                  <Send className="h-5 w-5 mr-2" style={{ width: '1.25rem', height: '1.25rem' }} />
                   {t('form.submitButton')}
                 </>
               )}

@@ -115,6 +115,15 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -122,4 +131,357 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* ============================================
+   CRITICAL FALLBACK STYLES FOR KOSOVO/GREECE
+   ============================================
+   These styles ensure the form is visible and functional
+   even if Tailwind CSS fails to load properly.
+   ============================================ */
+
+/* Layout & Container */
+.max-w-4xl {
+  max-width: 56rem !important;
+}
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.bg-stone-50 {
+  background-color: #fafaf9 !important;
+}
+
+.min-h-screen {
+  min-height: 100vh !important;
+}
+
+.p-6 {
+  padding: 1.5rem !important;
+}
+
+/* Spacing utilities */
+.space-y-8 > * + * {
+  margin-top: 2rem !important;
+}
+
+.space-y-6 > * + * {
+  margin-top: 1.5rem !important;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem !important;
+}
+
+.space-y-2 > * + * {
+  margin-top: 0.5rem !important;
+}
+
+/* Card styles */
+.border-stone-200 {
+  border-color: #e7e5e4 !important;
+}
+
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+.bg-orange-50 {
+  background-color: #fff7ed !important;
+}
+
+.border-orange-200 {
+  border-color: #fed7aa !important;
+}
+
+.border {
+  border-width: 1px !important;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem !important;
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.border-b {
+  border-bottom-width: 1px !important;
+}
+
+/* Padding utilities */
+.pt-6 {
+  padding-top: 1.5rem !important;
+}
+
+.p-4 {
+  padding: 1rem !important;
+}
+
+.p-3 {
+  padding: 0.75rem !important;
+}
+
+.mt-4 {
+  margin-top: 1rem !important;
+}
+
+.mt-2 {
+  margin-top: 0.5rem !important;
+}
+
+/* Typography */
+.text-stone-800 {
+  color: #292524 !important;
+}
+
+.text-stone-600 {
+  color: #57534e !important;
+}
+
+.text-2xl {
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
+}
+
+.text-lg {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+}
+
+.text-sm {
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+
+.font-bold {
+  font-weight: 700 !important;
+}
+
+.font-semibold {
+  font-weight: 600 !important;
+}
+
+.font-medium {
+  font-weight: 500 !important;
+}
+
+/* Flex utilities */
+.flex {
+  display: flex !important;
+}
+
+.items-center {
+  align-items: center !important;
+}
+
+.justify-between {
+  justify-content: space-between !important;
+}
+
+.justify-center {
+  justify-content: center !important;
+}
+
+.gap-4 {
+  gap: 1rem !important;
+}
+
+.gap-2 {
+  gap: 0.5rem !important;
+}
+
+/* Grid layouts */
+.grid {
+  display: grid !important;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Input, Textarea, Select styles */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+textarea,
+select {
+  border: 1px solid #e7e5e4 !important;
+  border-radius: 0.375rem !important;
+  padding: 0.5rem 0.75rem !important;
+  width: 100% !important;
+  font-size: 1rem !important;
+  line-height: 1.5rem !important;
+  color: #292524 !important;
+  background-color: #ffffff !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: #ea580c !important;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1) !important;
+}
+
+/* Hover effects */
+.hover\:bg-orange-50:hover {
+  background-color: #fff7ed !important;
+}
+
+.hover\:border-orange-200:hover {
+  border-color: #fed7aa !important;
+}
+
+/* Image sizing */
+.h-12 {
+  height: 3rem !important;
+}
+
+.w-auto {
+  width: auto !important;
+}
+
+/* Cursor */
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card component fallbacks */
+[data-slot="card"] {
+  background-color: #ffffff !important;
+  border: 1px solid #e7e5e4 !important;
+  border-radius: 0.75rem !important;
+  padding: 1.5rem 0 !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.5rem !important;
+}
+
+[data-slot="card-header"] {
+  padding: 0 1.5rem !important;
+  display: grid !important;
+  gap: 0.375rem !important;
+}
+
+[data-slot="card-content"] {
+  padding: 0 1.5rem !important;
+}
+
+[data-slot="card-title"] {
+  font-weight: 600 !important;
+  line-height: 1 !important;
+}
+
+[data-slot="card-description"] {
+  color: #57534e !important;
+  font-size: 0.875rem !important;
+}
+
+/* Additional padding utilities */
+.px-6 {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+.py-6 {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem !important;
+}
+
+/* Width utilities */
+.w-full {
+  width: 100% !important;
+}
+
+/* Height utilities */
+.h-5 {
+  height: 1.25rem !important;
+}
+
+.w-5 {
+  width: 1.25rem !important;
+}
+
+/* Margin utilities */
+.mr-2 {
+  margin-right: 0.5rem !important;
+}
+
+/* Text muted */
+.text-muted-foreground {
+  color: #57534e !important;
+}
+
+/* Leading */
+.leading-none {
+  line-height: 1 !important;
+}
+
+/* Disabled states */
+.disabled\:opacity-50:disabled {
+  opacity: 0.5 !important;
+}
+
+.disabled\:cursor-not-allowed:disabled {
+  cursor: not-allowed !important;
+}
+
+/* Horizontal spacing */
+.space-x-2 > * + * {
+  margin-left: 0.5rem !important;
+}
+
+.space-x-3 > * + * {
+  margin-left: 0.75rem !important;
+}
+
+/* Items start */
+.items-start {
+  align-items: flex-start !important;
+}
+
+/* Relative positioning */
+.relative {
+  position: relative !important;
+}
+
+/* Absolute positioning */
+.absolute {
+  position: absolute !important;
+}
+
+/* Top, right positioning */
+.top-2 {
+  top: 0.5rem !important;
+}
+
+.right-2 {
+  right: 0.5rem !important;
 }
