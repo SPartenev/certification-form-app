@@ -424,14 +424,12 @@ export function CertificationForm() {
     
     setIsSubmitting(true)
     
-    // Преобразуваме данните в български преди изпращане
-    const translatedFormData = translateFormData(formData)
-    
+    // Изпращаме данните точно както са попълнени, без преобразуване
     // Премахваме генерирането на ID от клиента.
     // Сървърът ще генерира ID-то.
     const submissionData = {
-      formData: translatedFormData,
-      selectedStandards: translatedFormData.standards,
+      formData: formData,
+      selectedStandards: formData.standards,
       applicationTypes: formData.applicationTypes,
       // Добавяме останалите полета, които сървърът очаква
       filledBy: formData.filledBy,
