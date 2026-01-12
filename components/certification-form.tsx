@@ -424,12 +424,31 @@ export function CertificationForm() {
     
     setIsSubmitting(true)
     
-    // Изпращаме данните точно както са попълнени, без преобразуване
+    // Преобразуваме само стандартите в пълни имена (ISO 9001:2015), останалите данни остават както са попълнени
+    const standardTranslations: { [key: string]: string } = {
+      "iso9001": "ISO 9001:2015",
+      "iso22000": "ISO 22000:2018", 
+      "iso45001": "ISO 45001:2018",
+      "iso39001": "ISO 39001:2012",
+      "iso14001": "ISO 14001:2015",
+      "iso27001": "ISO/IEC 27001:2022",
+      "iso37001": "ISO 37001:2016",
+      "iso37001_2025": "ISO 37001:2025",
+      "other": t('common.other')
+    }
+    
+    const translatedStandards = formData.standards.map(standard => 
+      standardTranslations[standard] || standard
+    )
+    
     // Премахваме генерирането на ID от клиента.
     // Сървърът ще генерира ID-то.
     const submissionData = {
-      formData: formData,
-      selectedStandards: formData.standards,
+      formData: {
+        ...formData,
+        standards: translatedStandards // Само стандартите се преобразуват в пълни имена
+      },
+      selectedStandards: translatedStandards,
       applicationTypes: formData.applicationTypes,
       // Добавяме останалите полета, които сървърът очаква
       filledBy: formData.filledBy,
