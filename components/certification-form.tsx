@@ -476,12 +476,12 @@ export function CertificationForm() {
     // Преобразуваме ISO 27001 категориите
     const translatedIso27001 = {
       ...formData.iso27001,
-      category1: formData.iso27001.category1 ? (category1Translations[formData.iso27001.category1] || formData.iso27001.category1) : "",
-      category2: formData.iso27001.category2 ? (category2Translations[formData.iso27001.category2] || formData.iso27001.category2) : "",
-      category3: formData.iso27001.category3 ? (category3Translations[formData.iso27001.category3] || formData.iso27001.category3) : "",
-      category4: formData.iso27001.category4 ? (category4Translations[formData.iso27001.category4] || formData.iso27001.category4) : "",
-      category5: formData.iso27001.category5 ? (category5Translations[formData.iso27001.category5] || formData.iso27001.category5) : "",
-      category6: formData.iso27001.category6 ? (category6Translations[formData.iso27001.category6] || formData.iso27001.category6) : "",
+      category1: category1Translations[formData.iso27001.category1] || formData.iso27001.category1 || "",
+      category2: category2Translations[formData.iso27001.category2] || formData.iso27001.category2 || "",
+      category3: category3Translations[formData.iso27001.category3] || formData.iso27001.category3 || "",
+      category4: category4Translations[formData.iso27001.category4] || formData.iso27001.category4 || "",
+      category5: category5Translations[formData.iso27001.category5] || formData.iso27001.category5 || "",
+      category6: category6Translations[formData.iso27001.category6] || formData.iso27001.category6 || "",
     }
     
     // Преобразуваме sites[].type
@@ -508,6 +508,7 @@ export function CertificationForm() {
     const submissionData = {
       formData: {
         ...formData,
+        // Презаписваме с преобразуваните данни (трябва да са след ...formData за да презапишат оригиналните)
         standards: translatedStandards, // Стандартите се преобразуват в пълни имена
         iso27001: translatedIso27001, // ISO 27001 категориите се преобразуват в целите изречения
         sites: translatedSites, // Типовете на обектите се преобразуват
