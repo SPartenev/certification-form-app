@@ -441,12 +441,86 @@ export function CertificationForm() {
       standardTranslations[standard] || standard
     )
     
+    // Преобразуваме ISO 27001 категориите в целите изречения (преведените текстове)
+    const category1Translations: { [key: string]: string } = {
+      "non-critical": t('iso27001.category1.option1'),
+      "serves-critical": t('iso27001.category1.option2'),
+      "critical": t('iso27001.category1.option3')
+    }
+    const category2Translations: { [key: string]: string } = {
+      "standard-repetitive": t('iso27001.category2.option1'),
+      "standard-non-repetitive": t('iso27001.category2.option2'),
+      "complex": t('iso27001.category2.option3')
+    }
+    const category3Translations: { [key: string]: string } = {
+      "mature": t('iso27001.category3.option1'),
+      "partial": t('iso27001.category3.option2'),
+      "new": t('iso27001.category3.option3')
+    }
+    const category4Translations: { [key: string]: string } = {
+      "simple": t('iso27001.category4.option1'),
+      "moderate": t('iso27001.category4.option2'),
+      "complex-it": t('iso27001.category4.option3')
+    }
+    const category5Translations: { [key: string]: string } = {
+      "minimal": t('iso27001.category5.option1'),
+      "moderate": t('iso27001.category5.option2'),
+      "high": t('iso27001.category5.option3')
+    }
+    const category6Translations: { [key: string]: string } = {
+      "minimal": t('iso27001.category6.option1'),
+      "moderate": t('iso27001.category6.option2'),
+      "extensive": t('iso27001.category6.option3')
+    }
+    
+    // Преобразуваме ISO 27001 категориите
+    const translatedIso27001 = {
+      ...formData.iso27001,
+      category1: formData.iso27001.category1 ? (category1Translations[formData.iso27001.category1] || formData.iso27001.category1) : "",
+      category2: formData.iso27001.category2 ? (category2Translations[formData.iso27001.category2] || formData.iso27001.category2) : "",
+      category3: formData.iso27001.category3 ? (category3Translations[formData.iso27001.category3] || formData.iso27001.category3) : "",
+      category4: formData.iso27001.category4 ? (category4Translations[formData.iso27001.category4] || formData.iso27001.category4) : "",
+      category5: formData.iso27001.category5 ? (category5Translations[formData.iso27001.category5] || formData.iso27001.category5) : "",
+      category6: formData.iso27001.category6 ? (category6Translations[formData.iso27001.category6] || formData.iso27001.category6) : "",
+    }
+    
+    // Преобразуваме sites[].type
+    const translatedSites = formData.sites.map(site => ({
+      ...site,
+      type: site.type === "main" ? t('scope.main') : site.type === "additional" ? t('scope.temporary') : site.type
+    }))
+    
+    // Преобразуваме yes/no отговори
+    const yesNoTranslations: { [key: string]: string } = {
+      "yes": t('yes.no.yes'),
+      "no": t('yes.no.no')
+    }
+    
+    // Преобразуваме iso14001.automation
+    const automationTranslations: { [key: string]: string } = {
+      "low": t('iso14001.automation.low'),
+      "medium": t('iso14001.automation.medium'),
+      "high": t('iso14001.automation.high')
+    }
+    
     // Премахваме генерирането на ID от клиента.
     // Сървърът ще генерира ID-то.
     const submissionData = {
       formData: {
         ...formData,
-        standards: translatedStandards // Само стандартите се преобразуват в пълни имена
+        standards: translatedStandards, // Стандартите се преобразуват в пълни имена
+        iso27001: translatedIso27001, // ISO 27001 категориите се преобразуват в целите изречения
+        sites: translatedSites, // Типовете на обектите се преобразуват
+        developNewProducts: formData.developNewProducts ? (yesNoTranslations[formData.developNewProducts] || formData.developNewProducts) : "",
+        manufactureProducts: formData.manufactureProducts ? (yesNoTranslations[formData.manufactureProducts] || formData.manufactureProducts) : "",
+        iso14001: {
+          ...formData.iso14001,
+          automation: formData.iso14001.automation ? (automationTranslations[formData.iso14001.automation] || formData.iso14001.automation) : ""
+        },
+        transfer: {
+          ...formData.transfer,
+          validCertificate: formData.transfer.validCertificate ? (yesNoTranslations[formData.transfer.validCertificate] || formData.transfer.validCertificate) : ""
+        }
       },
       selectedStandards: translatedStandards,
       applicationTypes: formData.applicationTypes,
