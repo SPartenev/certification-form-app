@@ -484,10 +484,16 @@ export function CertificationForm() {
       category6: category6Translations[formData.iso27001.category6] || formData.iso27001.category6 || "",
     }
     
-    // Преобразуваме sites[].type
+    // Преобразуваме sites[].type в формат "Български/English"
+    const siteTypeFormats: { [key: string]: string } = {
+      "main": "Основна/Main",
+      "additional": "Допълнителна/Additional",
+      "temporary": "Временна/Temporary"
+    }
+    
     const translatedSites = formData.sites.map(site => ({
       ...site,
-      type: site.type === "main" ? t('scope.main') : site.type === "additional" ? t('scope.temporary') : site.type
+      type: siteTypeFormats[site.type] || site.type
     }))
     
     // Преобразуваме yes/no отговори
@@ -503,6 +509,25 @@ export function CertificationForm() {
       "high": t('iso14001.automation.high')
     }
     
+    // Преобразуваме applicationTypes в формат "Български/English"
+    // Мапиране от преведените текстове (и на български, и на английски) към желания формат
+    const applicationTypeFormats: { [key: string]: string } = {
+      // Български текстове
+      "Нова сертификация": "Нова сертификация/New Cert",
+      "Промяна в сертификация": "Промяна/Change in Cert",
+      "Подновяване": "Подновяване/Renewal",
+      "Трансфер": "Трансфер/Transfer",
+      // Английски текстове
+      "New Certification": "Нова сертификация/New Cert",
+      "Change in Certification": "Промяна/Change in Cert",
+      "Renewal": "Подновяване/Renewal",
+      "Transfer": "Трансфер/Transfer"
+    }
+    
+    const translatedApplicationTypes = formData.applicationTypes.map(type => 
+      applicationTypeFormats[type] || type
+    )
+    
     // Премахваме генерирането на ID от клиента.
     // Сървърът ще генерира ID-то.
     const submissionData = {
@@ -512,6 +537,7 @@ export function CertificationForm() {
         standards: translatedStandards, // Стандартите се преобразуват в пълни имена
         iso27001: translatedIso27001, // ISO 27001 категориите се преобразуват в целите изречения
         sites: translatedSites, // Типовете на обектите се преобразуват
+        applicationTypes: translatedApplicationTypes, // Типовете на заявките се преобразуват в формат "Български/English"
         developNewProducts: formData.developNewProducts ? (yesNoTranslations[formData.developNewProducts] || formData.developNewProducts) : "",
         manufactureProducts: formData.manufactureProducts ? (yesNoTranslations[formData.manufactureProducts] || formData.manufactureProducts) : "",
         iso14001: {
@@ -524,7 +550,7 @@ export function CertificationForm() {
         }
       },
       selectedStandards: translatedStandards,
-      applicationTypes: formData.applicationTypes,
+      applicationTypes: translatedApplicationTypes,
       // Добавяме останалите полета, които сървърът очаква
       filledBy: formData.filledBy,
       organizationName: formData.organizationName,
