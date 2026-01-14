@@ -115,8 +115,26 @@ interface FormData {
 }
 
 export function CertificationForm() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const [isSubmitting, setIsSubmitting] = useState(false)
+  
+  // Функция за транслитерация от български на английски
+  const transliterateToEnglish = (text: string): string => {
+    const transliterationMap: { [key: string]: string } = {
+      'А': 'A', 'а': 'a', 'Б': 'B', 'б': 'b', 'В': 'V', 'в': 'v',
+      'Г': 'G', 'г': 'g', 'Д': 'D', 'д': 'd', 'Е': 'E', 'е': 'e',
+      'Ж': 'Zh', 'ж': 'zh', 'З': 'Z', 'з': 'z', 'И': 'I', 'и': 'i',
+      'Й': 'Y', 'й': 'y', 'К': 'K', 'к': 'k', 'Л': 'L', 'л': 'l',
+      'М': 'M', 'м': 'm', 'Н': 'N', 'н': 'n', 'О': 'O', 'о': 'o',
+      'П': 'P', 'п': 'p', 'Р': 'R', 'р': 'r', 'С': 'S', 'с': 's',
+      'Т': 'T', 'т': 't', 'У': 'U', 'у': 'u', 'Ф': 'F', 'ф': 'f',
+      'Х': 'H', 'х': 'h', 'Ц': 'Ts', 'ц': 'ts', 'Ч': 'Ch', 'ч': 'ch',
+      'Ш': 'Sh', 'ш': 'sh', 'Щ': 'Sht', 'щ': 'sht', 'Ъ': 'A', 'ъ': 'a',
+      'Ь': 'Y', 'ь': 'y', 'Ю': 'Yu', 'ю': 'yu', 'Я': 'Ya', 'я': 'ya'
+    }
+    
+    return text.split('').map(char => transliterationMap[char] || char).join('')
+  }
   const [formData, setFormData] = useState<FormData>({
     applicationTypes: [],
     organizationName: "",
@@ -528,6 +546,12 @@ export function CertificationForm() {
       applicationTypeFormats[type] || type
     )
     
+    // Преобразуваме името на контактното лице на английски
+    // Ако формата е на български, транслитерираме името; ако е на английски, използваме същото име
+    const contactPersonNameEnglish = language === 'bg' 
+      ? transliterateToEnglish(formData.contactPersonName)
+      : formData.contactPersonName
+    
     // Премахваме генерирането на ID от клиента.
     // Сървърът ще генерира ID-то.
     const submissionData = {
@@ -555,6 +579,7 @@ export function CertificationForm() {
       filledBy: formData.filledBy,
       organizationName: formData.organizationName,
       eik: formData.eik,
+      contactPersonNameEnglish: contactPersonNameEnglish, // Име на контактното лице на английски
     }
     
     try {
