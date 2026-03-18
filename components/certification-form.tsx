@@ -893,6 +893,7 @@ export function CertificationForm() {
                           onChange={(e) => updateSite(index, "address", e.target.value)}
                           className="border-stone-200 focus:border-orange-500 focus:ring-orange-500"
                           placeholder={t('placeholder.siteAddress')}
+                          required={index === 0}
                         />
                       </div>
                       <div className="space-y-2">
