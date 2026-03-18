@@ -887,7 +887,7 @@ export function CertificationForm() {
                   <CardContent className="pt-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label>{t('scope.siteAddress')} {index + 1}</Label>
+                        <Label>{t('scope.siteAddress')} {index + 1}{index === 0 ? ' *' : ''}</Label>
                         <Input
                           value={site.address}
                           onChange={(e) => updateSite(index, "address", e.target.value)}
